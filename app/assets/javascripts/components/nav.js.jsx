@@ -14,12 +14,10 @@ var NavBar = React.createClass({
 			<nav className="navbar navbar-default">
 				<div className="container-fluid">
 					<Logo/>
-				
-
 				<div className="collapse navbar-collapse">
 					<SearchForm/>
+					<UserStatus loggedIn={this.props.user}/>
 				</div>
-				<UserStatus loggedIn={this.props.user}/>
 				</div>
 			</nav>
 		);
@@ -29,8 +27,8 @@ var NavBar = React.createClass({
 var Logo = React.createClass({
 	render: function(){
 		return(
-			<a className="navbar-brand" href="/">
-				<h4>logo</h4>
+			<a className="navbar-brand" href="/users">
+				<h4 className="glyphicon glyphicon-eye-open "> BLinkedIn</h4>
 			</a>
 		);
 	}
@@ -42,8 +40,8 @@ var SearchForm = React.createClass({
 			<form className="navbar-form navbar-right" role="search">
 				<div className="form-group">
 					<input type="text" className="form-control" placeholder="search"/>
-
 				</div>	
+				<button type="submit" className="btn btn-default glyphicon glyphicon-search"></button>
 			</form>
 		);
 	}
@@ -53,11 +51,11 @@ var UserStatus = React.createClass({
 	render: function(){
 		if (this.props.loggedIn)  
 		return (
-			<a href='/logout'>Logout</a>
+			<a className="navbar-right" href='/logout'>Logout</a>
 			);
 		else 
 		return(
-			<a href='/auth/google_oauth2'>Sign In with Google</a>
+			<a className="navbar-right" href='/auth/google_oauth2'>Sign In with Google</a>
 			);
 	}
 })
