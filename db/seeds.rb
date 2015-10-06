@@ -1,3 +1,4 @@
+
 locations = [
 	[ 'Atlanta','Georgia' ],
 	[ 'Austin', 'Texas' ],
