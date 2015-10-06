@@ -11,35 +11,51 @@
     </div>
   <% end %>
 
-
-  <div class="field">
-    <%= f.label :location_id %><br>
-    <%= f.text_field :location_id %>
-  </div>
+  <%= fields_for @alumni.user do |u| %>
+    <div class="field">
+      <%= u.label :first_name %><br>
+      <%= u.text_field :first_name, value: @alumni.user.first_name %>
+    </div>
+    <div class="field">
+      <%= u.label :last_name %><br>
+      <%= u.text_field :last_name, value: @alumni.user.last_name %>
+    </div>
+  <% end %>
+  <%= f.select(:location_id) do %>
+    <% Location.all.each do |c| %>
+      <%= content_tag(:option, c.city, value: c.id) %>
+    <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :about %><br>
     <%= f.text_area :about %>
   </div>
   <div class="field">
-    <%= f.label :q1 %><br>
+    <%= f.label :q1, value: "What are your greatest strengths?" %><br>
     <%= f.text_area :q1 %>
   </div>
   <div class="field">
-    <%= f.label :q2 %><br>
+    <%= f.label :q2, value: "Have you read any good books lately?" %><br>
     <%= f.text_area :q2 %>
   </div>
   <div class="field">
-    <%= f.label :q3 %><br>
+    <%= f.label :q3, value: "Can you do a headstand?" %><br>
     <%= f.text_area :q3 %>
   </div>
   <div class="field">
     <%= f.label :position %><br>
     <%= f.text_field :position %>
   </div>
-  <div class="field">
-    <%= f.label :view %><br>
-    <%= f.number_field :view %>
-  </div>
+
+  <%= fields_for @alumni.endorsements do |e| %>
+    <div class="field">
+      <% Skill.all.each do |s| %>
+        <%= check_box_tag(s.name) %>
+        <%= label_tag(s.name, s.name) %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :fun_fact %><br>
     <%= f.text_area :fun_fact %>
