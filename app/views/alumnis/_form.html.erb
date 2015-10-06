@@ -50,9 +50,10 @@
   <%= fields_for @alumni.endorsements do |e| %>
     <div class="field">
       <% Skill.all.each do |s| %>
-        <%= check_box_tag(s.name) %>
-        <%= label_tag(s.name, s.name) %>
+        <%= check_box_tag s.name %>
+        <%= label_tag s.name, value: s.name %>
       <% end %>
+      <%= hidden_tag s.user_id, value: @user.id %>
     </div>
   <% end %>
 
