@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @employers = Employer.all
+    @alumni = Alumni.all
   end
 
   # GET /users/1
@@ -24,7 +26,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(user_params)
+    @user.auth_hash = request.env["omniauth.auth"]
+    @user.uid = request.env["omniauth.auth"]['uid']
 
     respond_to do |format|
       if @user.save
@@ -69,6 +74,10 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :auth_hash, :avatar)
+
+      params.require(:user).permit(:first_name, :last_name, :email, :auth_hash, :uid, :avatar)
+
+
+
     end
 end

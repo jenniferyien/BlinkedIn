@@ -25,7 +25,8 @@ class AlumnisController < ApplicationController
   # POST /alumnis.json
   def create
     @alumni = Alumni.new(alumni_params)
-
+    @alumni.user_id = current_user.id
+    
     respond_to do |format|
       if @alumni.save
         format.html { redirect_to @alumni, notice: 'Alumni was successfully created.' }
