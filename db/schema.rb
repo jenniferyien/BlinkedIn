@@ -96,7 +96,8 @@ ActiveRecord::Schema.define(version: 20151005223511) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "auth_hash"
+    t.text     "auth_hash"
+    t.string   "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
