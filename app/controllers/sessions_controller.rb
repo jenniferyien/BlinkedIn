@@ -10,7 +10,19 @@ class SessionsController < ApplicationController
       @user.save!
     end
     session[:uid] = @user.id
-    redirect_to '/'
+    @alumni = Alumni.find_by(user_id: @user.id)
+    @employer = Employer.find_by(user_id: @user.id)
+    if @alumni
+      redirect_to alumni_path(@alumni.id)
+    elsif @employer
+      redirect_to employer_path(@employer.id)
+    else
+      redirect_to '/account_type'
+    end
+  end
+
+  def account_type
+
   end
 
   def logout
