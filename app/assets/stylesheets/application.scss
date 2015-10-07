@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require chosen
  *= require_tree .
  *= require_self
  */
@@ -17,6 +18,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "variables";
+@import "chosen";
 
 .lefteye {
   margin: 0 0.5%;

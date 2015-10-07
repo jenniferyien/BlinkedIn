@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @alumni.user_id %>
+  <strong>Name:</strong>
+  <%= @alumni.user.first_name %> <%= @alumni.user.last_name %>
 </p>
 
 <p>
   <strong>Location:</strong>
-  <%= @alumni.location.city %>
+  <%= @alumni.location.city %>, <%= @alumni.location.state %>
 </p>
 
 <p>

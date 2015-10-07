@@ -22,7 +22,9 @@ gem 'fog'
 gem 'figaro'
 gem 'simple_form'
 gem 'devise'
-
+# for nicer dropdowns
+gem 'chosen-rails'
+gem "compass-rails", github: "Compass/compass-rails", branch: "master"
 # gem for implementing React.js in our Rails App
 gem 'react-rails', '~> 1.0'
 #this is to turn our analytics into charts
