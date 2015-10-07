@@ -11,4 +11,15 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :current_user
+
+  def avatar
+    if Alumni.find_by(user: current_user)
+      avatar = Alumni.find_by(user_id: current_user.id)
+    end
+
+    if Employer.find_by(user: current_user)
+      avatar = Employer.find_by(user_id: current_user.id)
+    end
+  end
+  helper_method :avatar
 end

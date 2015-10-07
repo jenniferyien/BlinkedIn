@@ -8,9 +8,10 @@
 </head>
 <body>
 
-<%= react_component "MainDiv", user:current_user %>
-	  
-<%= yield %>
+  <%= react_component "MainDiv", user:current_user, user_avatar:avatar %>
+  <div class='container'>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
