@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 20151006211525) do
     t.string   "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "avatar"
   end
 
   add_foreign_key "alumnis", "locations"
