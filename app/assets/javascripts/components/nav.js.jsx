@@ -25,11 +25,12 @@ var NavBar = React.createClass({
 		return(
 			<div className="container-fluid">
 					<Logo/>
-				<div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-					<SearchForm/>
-					<ul className="nav navbar-nav navbar-right">
-						<UserStatus loggedIn={this.props.user} avataricon={this.props.avatar}/>
-					</ul>
+				<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+						<ul className="nav navbar-nav navbar-right">
+							<UserStatus loggedIn={this.props.user} avataricon={this.props.avatar}/>
+						</ul>
+						<SearchForm/>
 				</div>
 			</div>
 		);
@@ -40,19 +41,22 @@ var Logo = React.createClass({
 	render: function(){
 		return(
 			<div className='navbar-header col-md-8'>
-				<div id='lefteye' className='eye'>
-				</div>
-				<div id='eye' className='eye'>
-				</div>
-				<a className="navbar-brand" href="/users">
-					&#160;BLinkedIn
-				</a>
 				<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	        <span className="sr-only">Toggle navigation</span>
-	        <span className="icon-bar"></span>
-	        <span className="icon-bar"></span>
-	        <span className="icon-bar"></span>
-	      </button>
+					<span className="sr-only">Toggle navigation</span>
+					<span className="icon-bar"></span>
+					<span className="icon-bar"></span>
+					<span className="icon-bar"></span>
+				</button>
+
+				<a className="navbar-brand" href="/users">
+					<div className='col-md-4'>
+						<div id='lefteye' className='eye'>
+						</div>
+					</div>
+					<div className='col-md-4'>
+						BLinkedIn
+					</div>
+				</a>
 			</div>
 		);
 	}
@@ -61,7 +65,7 @@ var Logo = React.createClass({
 var SearchForm = React.createClass({
 	render: function(){
 		return(
-			<form className="navbar-form navbar-left" role="search">
+			<form className="navbar-form navbar-right" role="search">
 				<div className="form-group">
 					<input type="text" className="form-control" placeholder="search"/>
 				</div>
@@ -77,8 +81,8 @@ var UserStatus = React.createClass({
 		return (
 			<div>
 			<li className="dropdown">
-			<a href="#" id='avatar-link' className="dropdown-toggle" data-toggle="dropdown" role="button">
-				<img id='avatar-icon' src={this.props.avataricon.avatar.profile.url} /></a>
+				<a href="#" id='avatar-link' className="dropdown-toggle" data-toggle="dropdown" role="button">
+					<img id='avatar-icon' src={this.props.avataricon.avatar.profile.url} /></a>
 				<ul className="dropdown-menu">
 	            <li><a href="#">Homepage</a></li>
 	            <li><a href="#">Profile</a></li>
