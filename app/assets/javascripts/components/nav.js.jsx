@@ -14,9 +14,11 @@ var NavBar = React.createClass({
 			<nav className="navbar navbar-default">
 				<div className="container-fluid">
 					<Logo/>
-				<div className="collapse navbar-collapse">
+				<div className="collapse navbar-collapse navbar-right">
 					<SearchForm/>
-					<UserStatus loggedIn={this.props.user}/>
+					<div className='nav navbar-nav navbar-right'>
+						<UserStatus loggedIn={this.props.user}/>
+					</div>
 				</div>
 				</div>
 			</nav>
@@ -27,9 +29,13 @@ var NavBar = React.createClass({
 var Logo = React.createClass({
 	render: function(){
 		return(
-			<a className="navbar-brand" href="/users">
-				<h4 className="glyphicon glyphicon-eye-open "> BLinkedIn</h4>
-			</a>
+			<div className='navbar-header col-md-4'>
+				<div id='eye' className='eye branding'>
+				</div>
+				<a className="navbar-brand branding" href="/users">
+					&#160;BLinkedIn
+				</a>
+			</div>
 		);
 	}
 });
@@ -37,11 +43,11 @@ var Logo = React.createClass({
 var SearchForm = React.createClass({
 	render: function(){
 		return(
-			<form className="navbar-form navbar-right" role="search">
+			<form className="navbar-form navbar-left" role="search">
 				<div className="form-group">
 					<input type="text" className="form-control" placeholder="search"/>
-				</div>	
-				<button type="submit" className="btn btn-default glyphicon glyphicon-search"></button>
+				</div>
+				<button type="submit" id='search' className="btn btn-default glyphicon glyphicon-search"></button>
 			</form>
 		);
 	}
@@ -49,13 +55,13 @@ var SearchForm = React.createClass({
 
 var UserStatus = React.createClass({
 	render: function(){
-		if (this.props.loggedIn)  
+		if (this.props.loggedIn)
 		return (
-			<a className="navbar-right" href='/logout'>Logout</a>
+			<a className='btn btn-default navbar-btn' href='/logout'>Logout</a>
 			);
-		else 
+		else
 		return(
-			<a className="navbar-right" href='/auth/google_oauth2'>Sign In with Google</a>
+			<a className='btn btn-default navbar-btn' href='/auth/google_oauth2'>Sign In with Google</a>
 			);
 	}
 })

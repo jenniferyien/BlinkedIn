@@ -18,3 +18,41 @@
 @import "bootstrap";
 @import "variables";
 
+.eye {
+  margin: 0 0.5%;
+  margin-top: 5%;
+  width: 40px;
+  min-height: 20px;
+  background-image: image-url('open.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
+  // -webkit-filter: grayscale(1) invert(1);
+  // filter: grayscale(1) invert(1);
+}
+.eyeclose {
+  margin: 0 0.5%;
+  margin-top: 5%;
+  width: 40px;
+  min-height: 20px;
+  background-image: image-url('close.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
+  // -webkit-filter: grayscale(1) invert(1);
+  // filter: grayscale(1) invert(1);
+}
+
+.navbar-default {
+  background-color: $gray-lighter;
+}
+
+#search {
+  position:relative;
+  left: -40px;
+  top: -0.5px;
+  border: none;
+}
+#search.btn-default:hover {
+  background-color: #fff;
+}
