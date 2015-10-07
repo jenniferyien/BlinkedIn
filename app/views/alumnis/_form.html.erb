@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= fields_for @alumni.user do |u| %>
+  <%= f.fields_for :user, @alumni.user do |u| %>
     <div class="field">
       <%= u.label :first_name %><br>
       <%= u.text_field :first_name, value: @alumni.user.first_name %>
@@ -47,11 +47,11 @@
     <%= f.text_field :position %>
   </div>
 
-  <%= fields_for @alumni.endorsements do |e| %>
+  <%= fields_for :endorsements, @alumni.endorsements do |e| %>
     <div class="field">
       <% Skill.all.each do |s| %>
-        <%= check_box_tag(s.name) %>
-        <%= label_tag(s.name, s.name) %>
+        <%= check_box_tag s.name, @alumni.endorsements.any?{|e| e.skill == s } %>
+        <%= label_tag s.name %>
       <% end %>
     </div>
   <% end %>
@@ -62,5 +62,12 @@
   </div>
   <div class="actions">
     <%= f.submit %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="field">
+    <%= f.submit "Save", class: 'btn btn-success' %>
   </div>
 <% end %>

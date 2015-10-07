@@ -7,7 +7,7 @@
 
 <p>
   <strong>Location:</strong>
-  <%= @alumni.location %>
+  <%= @alumni.location.city %>
 </p>
 
 <p>
@@ -16,17 +16,17 @@
 </p>
 
 <p>
-  <strong>Q1:</strong>
+  <strong>What are your greatest strengths?</strong>
   <%= @alumni.q1 %>
 </p>
 
 <p>
-  <strong>Q2:</strong>
+  <strong>Have you read any good books lately?</strong>
   <%= @alumni.q2 %>
 </p>
 
 <p>
-  <strong>Q3:</strong>
+  <strong>Can you do a headstand?</strong>
   <%= @alumni.q3 %>
 </p>
 
@@ -36,14 +36,20 @@
 </p>
 
 <p>
-  <strong>View:</strong>
-  <%= @alumni.view %>
+  <strong>Skills:</strong>
+  <%= @alumni.endorsements.each do |e| %>
+    <% if e.user_id == @alumni.user.id %>
+      <%= e.skill.name %>
+    <% end %>
+  <% end %>
 </p>
 
 <p>
   <strong>Fun fact:</strong>
   <%= @alumni.fun_fact %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_alumni_path(@alumni) %> |
 <%= link_to 'Back', alumnis_path %>
