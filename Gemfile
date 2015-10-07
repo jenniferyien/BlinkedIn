@@ -8,6 +8,8 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '~> 5.0'
+#this gem is for icons
+gem 'font-awesome-sass', '~> 4.4.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -21,6 +23,10 @@ gem 'figaro'
 gem 'simple_form'
 gem 'devise'
 
+# gem for implementing React.js in our Rails App
+gem 'react-rails', '~> 1.0'
+#this is to turn our analytics into charts
+gem 'chart-js-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

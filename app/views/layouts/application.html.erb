@@ -7,11 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if current_user %>
-    <%= link_to 'Log Out', '/logout' %>
-  <% else %>
-    <%= link_to 'Sign In with Google', '/auth/google_oauth2' %>
-  <% end %>
+
+<%= react_component "MainDiv", user:current_user %>
+
 <%= yield %>
 
 </body>
