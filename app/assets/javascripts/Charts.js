@@ -4,7 +4,7 @@ $(function(){
 var data = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
-        {   
+        {
             label: "My First dataset",
             fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(220,220,220,1)",

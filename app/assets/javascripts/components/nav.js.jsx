@@ -30,6 +30,8 @@ var Logo = React.createClass({
 	render: function(){
 		return(
 			<div className='navbar-header col-md-4'>
+				<div id='lefteye' className='eye branding'>
+				</div>
 				<div id='eye' className='eye branding'>
 				</div>
 				<a className="navbar-brand branding" href="/users">
