@@ -15,11 +15,11 @@ class ApplicationController < ActionController::Base
 
   def avatar
     if Alumni.find_by(user: current_user)
-      avatar = Alumni.find_by(user_id: current_user.id)
+      avatar = Alumni.find_by(user: current_user)
     end
 
     if Employer.find_by(user: current_user)
-      avatar = Employer.find_by(user_id: current_user.id)
+      avatar = Employer.find_by(user: current_user)
     end
   end
   helper_method :avatar
