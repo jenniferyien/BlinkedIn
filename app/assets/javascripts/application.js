@@ -12,13 +12,12 @@
 //
 //= require Chart
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require chosen-jquery
-
-
-//= require turbolinks
+//= require bootstrap-sprockets
 //= require react
 //= require react_ujs
 //= require components
+//= require turbolinks
 //= require_tree .
