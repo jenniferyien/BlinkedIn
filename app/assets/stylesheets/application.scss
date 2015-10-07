@@ -18,3 +18,50 @@
 @import "bootstrap";
 @import "variables";
 
+.lefteye {
+  margin: 0 0.5%;
+  margin-top: 5%;
+  width: 40px;
+  min-height: 20px;
+  background-image: image-url('open.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+  // -webkit-filter: grayscale(1) invert(1);
+  // filter: grayscale(1) invert(1);
+}
+.lefteyeclose {
+  margin: 0 0.5%;
+  margin-top: 5%;
+  width: 40px;
+  min-height: 20px;
+  background-image: image-url('close.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.navbar-default {
+  background-color: $gray-lighter;
+}
+
+#search {
+  position:relative;
+  left: -40px;
+  top: -0.5px;
+  border: none;
+}
+#search.btn-default:hover {
+  background-color: #fff;
+}
