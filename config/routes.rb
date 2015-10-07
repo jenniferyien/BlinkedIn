@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+
+
+  resources :resumes
   resources :employers
   resources :alumnis
   resources :users
