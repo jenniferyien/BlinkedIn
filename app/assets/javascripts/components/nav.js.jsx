@@ -14,7 +14,7 @@ var MainDiv = React.createClass({
 	render: function(){
 		return(
 			<nav className="navbar navbar-inverse">
-				<NavBar user={this.props.user} avatar={this.props.user_avatar}/>
+				<NavBar user={this.props.user}/>
 			</nav>
 		);
 	}
@@ -28,7 +28,7 @@ var NavBar = React.createClass({
 				<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 						<ul className="nav navbar-nav navbar-right">
-							<UserStatus loggedIn={this.props.user} avataricon={this.props.avatar}/>
+							<UserStatus loggedIn={this.props.user}/>
 						</ul>
 						<SearchForm/>
 				</div>
@@ -79,17 +79,9 @@ var UserStatus = React.createClass({
 	render: function(){
 		if (this.props.loggedIn)
 		return (
-			<div>
-			<li className="dropdown">
-				<a href="#" id='avatar-link' className="dropdown-toggle" data-toggle="dropdown" role="button">
-					<img id='avatar-icon' src={this.props.avataricon.avatar.profile.url} /></a>
-				<ul className="dropdown-menu">
-	            <li><a href="#">Homepage</a></li>
-	            <li><a href="#">Profile</a></li>
-	            <li><a className='btn btn-default navbar-btn' href='/logout'>Logout</a></li>
-	      </ul>
-			</li>
-			</div>
+
+	      <li><a className='btn btn-default navbar-btn' href='/logout'>Logout</a></li>
+
 			);
 		else
 		return(
