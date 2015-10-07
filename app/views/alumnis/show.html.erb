@@ -38,7 +38,9 @@
 <p>
   <strong>Skills:</strong>
   <%= @alumni.endorsements.each do |e| %>
-    <%= e.skill.name %>
+    <% if e.user_id == @alumni.user.id %>
+      <%= e.skill.name %>
+    <% end %>
   <% end %>
 </p>
 
