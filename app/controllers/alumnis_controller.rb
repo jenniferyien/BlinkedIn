@@ -25,8 +25,7 @@ class AlumnisController < ApplicationController
   # POST /alumnis.json
   def create
     @alumni = Alumni.new(alumni_params)
-    @alumni.avatar = 'http://i.telegraph.co.uk/multimedia/archive/02830/cat_2830677b.jpg'
-    current_user.id = @alumni.user_id
+    @alumni.user_id = current_user
 
     respond_to do |format|
       if @alumni.save
