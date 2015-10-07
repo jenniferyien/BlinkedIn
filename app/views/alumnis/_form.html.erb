@@ -1,4 +1,4 @@
-<%= form_for(@alumni) do |f| %>
+<%= form_for @alumni do |f| %>
   <% if @alumni.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@alumni.errors.count, "error") %> prohibited this alumni from being saved:</h2>
@@ -12,62 +12,66 @@
   <% end %>
 
   <%= f.fields_for :user, @alumni.user do |u| %>
-    <div class="field">
+    <div class="field form-group">
       <%= u.label :first_name %><br>
-      <%= u.text_field :first_name, value: @alumni.user.first_name %>
+      <%= u.text_field :first_name, class: 'form-control', value: @alumni.user.first_name %>
     </div>
-    <div class="field">
+    <div class="field form-group">
       <%= u.label :last_name %><br>
-      <%= u.text_field :last_name, value: @alumni.user.last_name %>
+      <%= u.text_field :last_name, class: 'form-control', value: @alumni.user.last_name %>
     </div>
   <% end %>
-  <%= f.select(:location_id) do %>
-    <% Location.all.each do |c| %>
-      <%= content_tag(:option, c.city, value: c.id) %>
-    <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :about %><br>
-    <%= f.text_area :about %>
-  </div>
-  <div class="field">
-    <%= f.label :q1, value: "What are your greatest strengths?" %><br>
-    <%= f.text_area :q1 %>
-  </div>
-  <div class="field">
-    <%= f.label :q2, value: "Have you read any good books lately?" %><br>
-    <%= f.text_area :q2 %>
-  </div>
-  <div class="field">
-    <%= f.label :q3, value: "Can you do a headstand?" %><br>
-    <%= f.text_area :q3 %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.text_field :position %>
-  </div>
-
-  <%= fields_for :endorsements, @alumni.endorsements do |e| %>
-    <div class="field">
-      <% Skill.all.each do |s| %>
-        <%= check_box_tag s.name, @alumni.endorsements.any?{|e| e.skill == s } %>
-        <%= label_tag s.name %>
+  <div class="field form-group">
+    <%= f.label :location_id %><br>
+    <%= f.select :location_id do %>
+      <% Location.all.each do |c| %>
+        <%= content_tag(:option, "#{c.city}, #{c.state}", value: c.id) %>
       <% end %>
+    <% end %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :about %><br>
+    <%= f.text_area :about, class: 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :q1, value: "What are your greatest strengths?" %><br>
+    <%= f.text_area :q1, class: 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :q2, value: "Have you read any good books lately?" %><br>
+    <%= f.text_area :q2, class: 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :q3, value: "Can you do a headstand?" %><br>
+    <%= f.text_area :q3, class: 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :position %><br>
+    <%= f.text_field :position, class: 'form-control' %>
+  </div>
+
+  <%= fields_for :endorsements, @alumni.endorsements do |x| %>
+    <!-- <%= select :skill, options_for_select(Skill.all.collect {|s| [ s.name, s.id ] }), include_blank: true, class: 'chosen-select', multiple: true %> -->
+    <div class="field form-group">
+      <%= label_tag :skill, "Skills" %><br>
+      <select class="chosen-select" id="skill" multiple>
+        <%= options_from_collection_for_select(Skill.all, :id, :name) %>
+      </select>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :fun_fact %><br>
-    <%= f.text_area :fun_fact %>
+    <%= f.text_area :fun_fact, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
+    <%= f.submit "upload", class: 'btn btn-default btn-sm' %>
   </div>
-  <div class="field">
-    <%= f.submit "Save", class: 'btn btn-success' %>
+
+  <div class="actions">
+    <%= f.submit "save", class: "btn btn-default" %>
   </div>
+
 <% end %>

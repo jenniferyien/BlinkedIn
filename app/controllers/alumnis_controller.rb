@@ -73,7 +73,4 @@ class AlumnisController < ApplicationController
       params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :avatar)
     end
 
-    def alumni_user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :auth_hash, :uid)
-    end
 end
