@@ -11,26 +11,14 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :user, @alumni.user do |u| %>
-  <div class="form-inline">
-    <div class="field form-group">
-      <%= u.label :first_name %><br>
-      <%= u.text_field :first_name, class: 'form-control', value: @alumni.user.first_name %>
-    </div>
-    <div class="field form-group">
-      <%= u.label :last_name %><br>
-      <%= u.text_field :last_name, class: 'form-control', value: @alumni.user.last_name %>
-    </div>
-  </div>
-  <% end %>
+
   <div class="field form-group">
     <%= f.label :location_id %><br>
-    <%= f.select :location_id, class: 'dropdown' do %>
-      <% Location.all.each do |c| %>
-        <%= content_tag(:option, "#{c.city}, #{c.state}", value: c.id) %>
-      <% end %>
+    <%= f.select :location_id do %>
+      <%= options_from_collection_for_select Location.all, :id, :city, @alumni.location_id %>
     <% end %>
   </div>
+
   <div class="field form-group">
     <%= f.label :about %><br>
     <%= f.text_area :about, class: 'form-control' %>
@@ -56,7 +44,7 @@
     <div class="field form-group">
       <%= s.label :skill, "Skills" %><br/>
       <select class="chosen-select" id="skill" multiple>
-        <%= options_from_collection_for_select(Skill.all, :id, :name, @alumni.endorsements.map {|e| e.skill_id }) %>
+        <%= options_from_collection_for_select Skill.all, :id, :name, @alumni.skills.map {|s| s.id } %>
       </select>
     </div>
   <% end %>
@@ -80,8 +68,115 @@
     <%= f.submit "save", class: "btn btn-success" %>
   </div>
 
+  <!-- make the form for the project like the location -->
+  <!-- this is the project form -->
 
-  <%= react_component "NewProject", user:current_user %>
+
+<div class="container">
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Project 1</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body"><%= f.fields_for :project do |u|%>
+                <div>
+                  <%= u.hidden_field :alumni_id, value: @alumni.id %>
+                </div>
+
+                <div>
+                  <%= u.label :name %><br>
+                  <%= u.text_field :name %>
+                </div>
+
+                <div>
+                  <%= u.label :url %><br>
+                  <%= u.text_field :url %>
+                </div>
+
+                <div>
+                  <%= u.label :description %><br>
+                  <%= u.text_field :description %>
+                </div>
+
+                <div class="actions">
+                <%= u.submit %>
+                </div>
+              <% end %></div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Project 2</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body"><%= f.fields_for :project do |u|%>
+                <div>
+                  <%= u.hidden_field :alumni_id, value: @alumni.id %>
+                </div>
+
+                <div>
+                  <%= u.label :name %><br>
+                  <%= u.text_field :name %>
+                </div>
+
+                <div>
+                  <%= u.label :url %><br>
+                  <%= u.text_field :url %>
+                </div>
+
+                <div>
+                  <%= u.label :description %><br>
+                  <%= u.text_field :description %>
+                </div>
+
+                <div class="actions">
+                <%= u.submit %>
+                </div>
+              <% end %></div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Project 3</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"><%= f.fields_for :project do |u|%>
+                <div>
+                  <%= u.hidden_field :alumni_id, value: @alumni.id %>
+                </div>
+
+                <div>
+                  <%= u.label :name %><br>
+                  <%= u.text_field :name %>
+                </div>
+
+                <div>
+                  <%= u.label :url %><br>
+                  <%= u.text_field :url %>
+                </div>
+
+                <div>
+                  <%= u.label :description %><br>
+                  <%= u.text_field :description %>
+                </div>
+
+                <div class="actions">
+                <%= u.submit %>
+                </div>
+              <% end %></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 

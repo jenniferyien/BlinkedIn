@@ -3,15 +3,22 @@ class UsersController < ApplicationController
 
 
   def search
-    @searchwords = params[:searchword]
-    @alumni = Alumni.all
+      if params[:search]
+        @alumnis = Alumni.where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR city LIKE ? OR state LIKE ? OR about LIKE ? OR q1 LIKE ? OR q2 LIKE ? OR q3 LIKE ? OR fun_fact LIKE ? OR position LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:user, :location)
+        @employers = Employer.where("city LIKE ? OR state LIKE ? OR company_name LIKE ? OR company_type LIKE ? OR website LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:location)
+
+      else
+        @alumni = Alumni.all()
+        @employer = Employer.all()
+      end
+    # @alumni = Alumni.all
   end
   # GET /users
   # GET /users.json
   def index
     @users = User.all
     @employers = Employer.all
-    @alumni = Alumni.all
+    @alumnis = Alumni.all
   end
 
   # GET /users/1
