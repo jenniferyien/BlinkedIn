@@ -11,25 +11,11 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :user, @alumni.user do |u| %>
-  <div class="form-inline">
-    <div class="field form-group">
-      <%= u.label :first_name %><br>
-      <%= u.text_field :first_name, class: 'form-control', value: @alumni.user.first_name %>
-    </div>
-    <div class="field form-group">
-      <%= u.label :last_name %><br>
-      <%= u.text_field :last_name, class: 'form-control', value: @alumni.user.last_name %>
-    </div>
-  </div>
-  <% end %>
 
   <div class="field form-group">
     <%= f.label :location_id %><br>
-    <%= f.select :location_id, class: 'dropdown' do %>
-      <% Location.all.each do |c| %>
-        <%= content_tag(:option, "#{c.city}, #{c.state}", value: c.id) %>
-      <% end %>
+    <%= f.select :location_id do %>
+      <%= options_from_collection_for_select Location.all, :id, :city, @alumni.location_id %>
     <% end %>
   </div>
 
@@ -58,7 +44,7 @@
     <div class="field form-group">
       <%= s.label :skill, "Skills" %><br/>
       <select class="chosen-select" id="skill" multiple>
-        <%= options_from_collection_for_select(Skill.all, :id, :name, @alumni.endorsements.map {|e| e.skill_id }) %>
+        <%= options_from_collection_for_select Skill.all, :id, :name, @alumni.skills.map {|s| s.id } %>
       </select>
     </div>
   <% end %>
@@ -187,7 +173,7 @@
               <% end %></div>
       </div>
     </div>
-  </div> 
+  </div>
 </div>
 
 
