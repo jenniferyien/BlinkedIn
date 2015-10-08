@@ -1,27 +1,25 @@
 var Search = React.createClass({
 	render: function(){
-		var people = this.props.alumni.map(function(alumni){
+		console.log('alumni', this.props.alumnis);
+
+		var people = this.props.alumnis.map(function(alumni){
 
 				return(
-				<ul>
-
-				<li>{alumni.about}</li>
-				<li>{alumni.user_id}</li>
-				</ul>
-				)
-		});
-		var company = this.props.company.map(function(name){
-				return (
-				<li>{name.company_name}</li>
+					<ul>
+					<li>{alumni.name}</li>
+					<li>{alumni.about}</li>
+					<li>{alumni.fun_fact}</li>
+					</ul>
 				)
 		});
 
-				return(
+
+		return(
 					<div>
 					{people}
-					{company}
+
 					</div>
-				)
+		)
 
 
 }
