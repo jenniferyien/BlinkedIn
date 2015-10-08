@@ -42,7 +42,7 @@
     <div class="field form-group">
       <%= s.label :skill, "Skills" %><br/>
       <select class="chosen-select" id="skill" multiple>
-        <%= options_from_collection_for_select(Skill.all, :id, :name, @alumni.endorsements.map {|e| e.skill_id }) %>
+        <%= options_from_collection_for_select Skill.all, :id, :name, @alumni.skills.map {|s| s.id } %>
       </select>
     </div>
   <% end %>
