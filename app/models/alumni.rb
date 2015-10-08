@@ -5,5 +5,6 @@ class Alumni < ActiveRecord::Base
   has_many :endorsements
   accepts_nested_attributes_for :user, :endorsements
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :resume, ResumeUploader
   accepts_nested_attributes_for :user
 end
