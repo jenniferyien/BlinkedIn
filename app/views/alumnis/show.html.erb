@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @alumni.avatar %>
+
 <p>
   <strong>Name:</strong>
   <%= @alumni.user.first_name %> <%= @alumni.user.last_name %>
@@ -37,8 +39,8 @@
 
 <p>
   <strong>Skills:</strong>
-  <%= @alumni.endorsements.each do |e| %>
-    <% if e.user_id == @alumni.user.id %>
+  <% @alumni.endorsements.map do |e| %>
+    <% if e.user == @alumni.user %>
       <%= e.skill.name %>
     <% end %>
   <% end %>
@@ -71,5 +73,6 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<%= link_to 'Edit', edit_alumni_path(@alumni) %> |
-<%= link_to 'Back', alumnis_path %>
+<br/>
+<%= link_to 'Edit', edit_alumni_path(@alumni), class: 'btn btn-success' %>
+<%= link_to 'Back', users_path, class: 'btn btn-success' %>

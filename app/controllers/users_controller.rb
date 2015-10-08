@@ -28,7 +28,6 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
-    @user.avatar = 'http://i.telegraph.co.uk/multimedia/archive/02830/cat_2830677b.jpg'
     @user.auth_hash = request.env["omniauth.auth"]
     @user.uid = request.env["omniauth.auth"]['uid']
 
