@@ -21,6 +21,10 @@
 @import "variables";
 @import "chosen";
 
+.navbar-brand {
+  width: 225px;
+}
+
 // blinking class images
 .lefteye {
   margin: 0 0.5%;
@@ -40,6 +44,10 @@
   -webkit-filter: grayscale(1) invert(1);
   filter: grayscale(1) invert(1);
 }
+.lefteye:hover {
+  background-image: image-url('close.png');
+}
+
 .lefteyeclose {
   margin: 0 0.5%;
   margin-top: 2%;
@@ -60,6 +68,17 @@
 }
 
 
-body {
-  background-color: #E5EEEE;
+.col-md-4.employer {
+  min-height:250px;
+  background-image: image-url('the-job.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+.col-md-4.alumni {
+  min-height:250px;
+  background-image: image-url('internships.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
 }
