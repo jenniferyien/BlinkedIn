@@ -11,24 +11,10 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :user, @alumni.user do |u| %>
-  <div class="form-inline">
-    <div class="field form-group">
-      <%= u.label :first_name %><br>
-      <%= u.text_field :first_name, class: 'form-control', value: @alumni.user.first_name %>
-    </div>
-    <div class="field form-group">
-      <%= u.label :last_name %><br>
-      <%= u.text_field :last_name, class: 'form-control', value: @alumni.user.last_name %>
-    </div>
-  </div>
-  <% end %>
   <div class="field form-group">
     <%= f.label :location_id %><br>
-    <%= f.select :location_id, class: 'dropdown' do %>
-      <% Location.all.each do |c| %>
-        <%= content_tag(:option, "#{c.city}, #{c.state}", value: c.id) %>
-      <% end %>
+    <%= f.select :location_id do %>
+      <%= options_from_collection_for_select Location.all, :id, :city, @alumni.location_id %>
     <% end %>
   </div>
   <div class="field form-group">
@@ -65,21 +51,18 @@
     <%= f.label :fun_fact %><br>
     <%= f.text_area :fun_fact, class: 'form-control' %>
   </div>
+
   <div class="field form-group">
     <%= f.label :avatar %>
-    <%= f.file_field :avatar, class: 'btn' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"Upload Resume as PDF" %>
     <%= f.file_field :avatar %>
   </div>
 
-  <div class="field">
-    <%= f.submit "Save", class: 'btn btn-success' %>
+  <div class="field form-group">
+    <%= f.label :resume, "Upload Resume as PDF" %>
+    <%= f.file_field :resume %>
+  </div>
 
-
-  <div class="actions">
+  <div class="actions form-group">
     <%= f.submit "save", class: "btn btn-success" %>
   </div>
 

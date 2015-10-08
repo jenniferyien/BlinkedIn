@@ -1,16 +1,26 @@
 var Search = React.createClass({
 	render: function(){
-		var people = this.props.alumni.map(function(name){
-				var about = name.about
-				return( about )
-		});
-		var search = this.props.searchtext;
-		console.log(people)
-		if(people[0].indexOf(search) != -1){
-			alert(search + " found");
-		}
+		var people = this.props.alumni.map(function(alumni){
+
 				return(
-					<h1>Hello{people.indexOf('coding')}</h1>
+				<ul>
+
+				<li>{alumni.about}</li>
+				<li>{alumni.user_id}</li>
+				</ul>
+				)
+		});
+		var company = this.props.company.map(function(name){
+				return (
+				<li>{name.company_name}</li>
+				)
+		});
+
+				return(
+					<div>
+					{people}
+					{company}
+					</div>
 				)
 
 
