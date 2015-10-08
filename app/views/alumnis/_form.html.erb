@@ -12,6 +12,7 @@
   <% end %>
 
   <%= f.fields_for :user, @alumni.user do |u| %>
+  <div class="form-inline">
     <div class="field form-group">
       <%= u.label :first_name %><br>
       <%= u.text_field :first_name, class: 'form-control', value: @alumni.user.first_name %>
@@ -20,10 +21,11 @@
       <%= u.label :last_name %><br>
       <%= u.text_field :last_name, class: 'form-control', value: @alumni.user.last_name %>
     </div>
+  </div>
   <% end %>
   <div class="field form-group">
     <%= f.label :location_id %><br>
-    <%= f.select :location_id do %>
+    <%= f.select :location_id, class: 'dropdown' do %>
       <% Location.all.each do |c| %>
         <%= content_tag(:option, "#{c.city}, #{c.state}", value: c.id) %>
       <% end %>
@@ -50,12 +52,11 @@
     <%= f.text_field :position, class: 'form-control' %>
   </div>
 
-  <%= fields_for :endorsements, @alumni.endorsements do |x| %>
-    <!-- <%= select :skill, options_for_select(Skill.all.collect {|s| [ s.name, s.id ] }), include_blank: true, class: 'chosen-select', multiple: true %> -->
+  <%= f.fields_for :endorsement do |s| %>
     <div class="field form-group">
-      <%= label_tag :skill, "Skills" %><br>
+      <%= s.label :skill, "Skills" %><br/>
       <select class="chosen-select" id="skill" multiple>
-        <%= options_from_collection_for_select(Skill.all, :id, :name) %>
+        <%= options_from_collection_for_select(Skill.all, :id, :name, @alumni.endorsements.map {|e| e.skill_id }) %>
       </select>
     </div>
   <% end %>
@@ -64,24 +65,19 @@
     <%= f.label :fun_fact %><br>
     <%= f.text_area :fun_fact, class: 'form-control' %>
   </div>
+
   <div class="field form-group">
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
-    <%= f.submit "upload", class: 'btn btn-default btn-sm' %>
   </div>
 
-  <div class="field">
-    <%= f.label :"Upload Resume as PDF" %>
-    <%= f.file_field :avatar %>
+  <div class="field form-group">
+    <%= f.label :resume, "Upload Resume as PDF" %>
+    <%= f.file_field :resume %>
   </div>
 
-  <div class="field">
-    <%= f.submit "Save", class: 'btn btn-success' %>
-
-
-  <div class="actions">
-    <%= f.submit "save", class: "btn btn-default" %>
-
+  <div class="actions form-group">
+    <%= f.submit "save", class: "btn btn-success" %>
   </div>
 
 
