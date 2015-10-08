@@ -22,13 +22,16 @@ gem 'fog'
 gem 'figaro'
 gem 'simple_form'
 gem 'devise'
-
+# for nicer dropdowns
+gem 'chosen-rails'
+gem "compass-rails", github: "Compass/compass-rails", branch: "master"
 # gem for implementing React.js in our Rails App
 gem 'react-rails', '~> 1.0'
 #this is to turn our analytics into charts
 gem 'chart-js-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'fancybox2-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

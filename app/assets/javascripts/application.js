@@ -13,14 +13,11 @@
 //= require Chart
 //= require jquery
 //= require jquery_ujs
+//= require fancybox
 //= require bootstrap-sprockets
-
+//= require chosen-jquery
 //= require turbolinks
 //= require react
 //= require react_ujs
 //= require components
 //= require_tree .
-
-
-
-

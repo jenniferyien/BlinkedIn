@@ -10,17 +10,25 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require chosen
  *= require_self
+ *= require fancybox
+ *= require_tree .
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "variables";
+@import "chosen";
 
+.navbar-brand {
+  width: 225px;
+}
+
+// blinking class images
 .lefteye {
   margin: 0 0.5%;
-  margin-top: 5%;
+  margin-top: 2%;
   width: 40px;
   min-height: 20px;
   background-image: image-url('open.png');
@@ -33,12 +41,16 @@
   transform: scaleX(-1);
   filter: FlipH;
   -ms-filter: "FlipH";
-  // -webkit-filter: grayscale(1) invert(1);
-  // filter: grayscale(1) invert(1);
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
 }
+.lefteye:hover {
+  background-image: image-url('close.png');
+}
+
 .lefteyeclose {
   margin: 0 0.5%;
-  margin-top: 5%;
+  margin-top: 2%;
   width: 40px;
   min-height: 20px;
   background-image: image-url('close.png');
@@ -51,17 +63,22 @@
   transform: scaleX(-1);
   filter: FlipH;
   -ms-filter: "FlipH";
-}
-.navbar-default {
-  background-color: $gray-lighter;
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
 }
 
-#search {
-  position:relative;
-  left: -40px;
-  top: -0.5px;
-  border: none;
+
+.col-md-4.employer {
+  min-height:250px;
+  background-image: image-url('the-job.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
 }
-#search.btn-default:hover {
-  background-color: #fff;
+.col-md-4.alumni {
+  min-height:250px;
+  background-image: image-url('internships.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
 }

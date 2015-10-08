@@ -15,3 +15,4 @@ class CreateAlumnis < ActiveRecord::Migration
     end
   end
 end
+
