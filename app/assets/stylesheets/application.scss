@@ -11,14 +11,19 @@
  * file per style scope.
  *
  *= require chosen
- *= require_tree .
  *= require_self
+ *= require fancybox
+ *= require_tree .
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "variables";
 @import "chosen";
+
+.navbar-brand {
+  width: 225px;
+}
 
 // blinking class images
 .lefteye {
@@ -39,6 +44,10 @@
   -webkit-filter: grayscale(1) invert(1);
   filter: grayscale(1) invert(1);
 }
+.lefteye:hover {
+  background-image: image-url('close.png');
+}
+
 .lefteyeclose {
   margin: 0 0.5%;
   margin-top: 2%;
@@ -58,46 +67,18 @@
   filter: grayscale(1) invert(1);
 }
 
-// moving search icon on top of search bar
-// #search {
-//   height: 27px;
-//   position:relative;
-//   left: -40px;
-//   top: -0.5px;
-//   border: none;
-// }
-// #search.btn-default:hover {
-//   background-color: #fff;
-// }
-//
-// #avatar-icon {
-//   margin-top: 10%;
-//   width: 35px;
-//   height: 35px;
-// }
-// #avatar-link {
-//   margin-right: 50%;
-// }
 
-body {
-  background-color: #E5EEEE;
+.col-md-4.employer {
+  min-height:250px;
+  background-image: image-url('the-job.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
 }
+.col-md-4.alumni {
+  min-height:250px;
+  background-image: image-url('internships.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 
-// @media screen and (max-width: 767px) {
-//   #search {
-//     height: 27px;
-//     position:static;
-//     left: 0;
-//     top: 0;
-//     border: none;
-//   }
-//   #avatar-icon {
-//     margin-top: 0;
-//     margin-left: 2%;
-//     width: 35px;
-//     height: 35px;
-//   }
-//   #avatar-link {
-//     margin-right: 0;
-//   }
-// }
+}
