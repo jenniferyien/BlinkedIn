@@ -1,5 +1,5 @@
 class EndorsementsController < ApplicationController
-	
+
 	def new
 		@endorsement = Endorsement.new
 	end

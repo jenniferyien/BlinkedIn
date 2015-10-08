@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -54,6 +55,8 @@
                       <% elsif Employer.find_by(user_id: current_user.id) %>
                         <% @employer = Employer.find_by(user_id: current_user.id) %>
                           <li><a href=<%="/employers/#{@employer.id}"%> >Profile</a></li>
+                      <% else %>
+                          <li><a href=<%="/account_type"%> >Profile</a></li>
                       <% end %>
                       <li><a href='/logout'>Logout</a></li>
                     <% end %>
@@ -68,6 +71,7 @@
   <div class='container'>
     <%= yield %>
   </div>
+
 
 </body>
 </html>

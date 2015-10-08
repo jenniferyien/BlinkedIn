@@ -12,6 +12,7 @@
 //
 //= require Chart
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require fancybox
 //= require bootstrap-sprockets
@@ -20,4 +21,5 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require turbolinks
 //= require_tree .
