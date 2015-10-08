@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @employers = Employer.all
-    @alumni = Alumni.all
+    @alumnis = Alumni.all
   end
 
   # GET /users/1
