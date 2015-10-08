@@ -39,6 +39,7 @@
 
 <p>
   <strong>Skills:</strong>
+  <% skills = @alumni.endorsements.map {|e| name: e.skill.name, count: }
   <% @alumni.skills.each do |s| %>
     <button class="btn btn-primary btn-xs" type="button"><%= s.name %> <span class="badge">42</span>
 </button>
