@@ -6,11 +6,13 @@ var Search = React.createClass({
 		});
 		var search = this.props.searchtext;
 		console.log(people)
-		  if (people[0] == "I like snowboarding and coding"){
+		if(people[0].indexOf(search) != -1){
+			alert(search + " found");
+		}
 				return(
-					<h1>Hello</h1>
+					<h1>Hello{people.indexOf('coding')}</h1>
 				)
-			}
+
 
 }
 });
