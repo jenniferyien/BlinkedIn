@@ -13,8 +13,6 @@ var NewProject = React.createClass({
 			<div>
 				<a onClick={this.createForm} >Create A New Project</a>
 				<ProjectForm onDone={this.hideForm} build={this.state.show} />
-				<ProjectForm onDone={this.hideForm} build={this.state.show} />
-				<ProjectForm onDone={this.hideForm} build={this.state.show} />
 			</div>
 		);
 	}
@@ -28,9 +26,13 @@ var ProjectForm = React.createClass({
 			return (
 				<div>
 					<form>
+						<label>Project Name</label>
 						<input type="text"/>
+						<label>Project URL</label>
 						<input type="text"/>
+						<label>alumni id</label>
 						<input type="text"/>
+						
 					<a onClick={this.props.onDone}>Hide</a>
 					</form>
 				</div>
