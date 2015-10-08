@@ -1,1 +1,5 @@
-<%= react_component "Search", searchtext:@searchwords, alumni:@alumni %>
+<%# react_component "Search", searchtext:@searchwords, alumni:@alumni %>
+<h1><% @alumni.each do |a| %>
+<%= a.about %>
+<% end %>
+</h1>

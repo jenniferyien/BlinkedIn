@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(version: 20151007160337) do
     t.string   "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "avatar"
     t.string   "attachment"
   end
 

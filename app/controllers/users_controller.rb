@@ -3,8 +3,13 @@ class UsersController < ApplicationController
 
 
   def search
-    @searchwords = params[:searchword]
-    @alumni = Alumni.all
+      if params[:search]
+        @alumni = Alumni.where("about LIKE ?", "%#{params[:search]}%")
+
+      else
+        @alumni = Alumni.all()
+      end
+    # @alumni = Alumni.all
   end
   # GET /users
   # GET /users.json
