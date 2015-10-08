@@ -56,7 +56,7 @@ jaden = User.create(first_name: 'Jaden', last_name: 'Carver' ,email: 'JadenDontB
 
 alum_bobby = Alumni.create(user_id: bobby.id, location_id: 1, about: "I like snowboarding and coding", q1: "My muscles",q2:"Catcher in the Rye" ,q3: "Yes", position: "BackEnd Developer", fun_fact: "I can jump 5 feet high.")
 alum_pan = Alumni.create(user_id: pan.id, location_id: 3, about: "I like coding and cooking like its nobody's business", q1: "Everything",q2:"Zesty Styled Cook Book" ,q3: "Of course", position: "CEO", fun_fact: "I can jump 10 feet high.")
-Alumni.create(user_id: dennis.id, location_id: 2, about: "Im a ninja on a Ninja", q1: "Acquiring Currency and disregarding females",q2:"Import Tunerz" ,q3: "Not sure", position: "Down for anything", fun_fact: "Im a master at taking selfies")
+alum_dennis = Alumni.create(user_id: dennis.id, location_id: 2, about: "Im a ninja on a Ninja", q1: "Acquiring Currency and disregarding females",q2:"Import Tunerz" ,q3: "Not sure", position: "Down for anything", fun_fact: "Im a master at taking selfies")
 Alumni.create(user_id: jaden.id, location_id: 4, about: "Long walks on the beach with my dog and disc golf", q1: "Problem solving",q2:"Holes" ,q3: "Not sure", position: "FrontEnd Dev", fun_fact: "I once threw a paper plane inside a real plane")
 
 Endorsement.create([
@@ -73,3 +73,8 @@ DesiredSkill.create([
 	{ employer_id: emp_harry.id, skill_id: 2 },
 	{ employer_id: emp_harry.id, skill_id: 7 }
 	])
+
+# Some fake projects
+Project.create(alumni_id: alum_dennis.id, name: "awesome project", url: "www.google.com", description:"made this in 5 minutes")
+Project.create(alumni_id: alum_dennis.id, name: "bad project", url: "www.yahoo.com", description:"made this in 1 minutes")
+
