@@ -4,10 +4,12 @@ class UsersController < ApplicationController
 
   def search
       if params[:search]
-        @alumni = Alumni.where("about LIKE ?", "%#{params[:search]}%")
-
+        @alumni = Alumni.where("about LIKE ? OR q1 LIKE ? OR q2 LIKE ? OR q3 LIKE ? OR fun_fact LIKE ? OR position LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+        @employer =Employer.where("company_name LIKE ? OR company_type LIKE ? OR website LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+        @user = User.select('id','first_name','last_name', 'email')
       else
         @alumni = Alumni.all()
+        @employer = Employer.all()
       end
     # @alumni = Alumni.all
   end
