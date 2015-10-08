@@ -8,11 +8,10 @@ class CreateAlumnis < ActiveRecord::Migration
       t.text :q2
       t.text :q3
       t.string :position
-      t.integer :view
+      t.integer :view, default: 0
       t.text :fun_fact
 
       t.timestamps null: false
     end
   end
 end
-

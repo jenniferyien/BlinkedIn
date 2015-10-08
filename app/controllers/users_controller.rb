@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def search
       if params[:search]
-        @alumni = Alumni.where("about LIKE ? OR q1 LIKE ? OR q2 LIKE ? OR q3 LIKE ? OR fun_fact LIKE ? OR position LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
-        @employer =Employer.where("company_name LIKE ? OR company_type LIKE ? OR website LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
-        @user = User.select('id','first_name','last_name', 'email')
+        @alumnis = Alumni.where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR city LIKE ? OR state LIKE ? OR about LIKE ? OR q1 LIKE ? OR q2 LIKE ? OR q3 LIKE ? OR fun_fact LIKE ? OR position LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:user, :location)
+        @employers = Employer.where("city LIKE ? OR state LIKE ? OR company_name LIKE ? OR company_type LIKE ? OR website LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:location)
+
       else
         @alumni = Alumni.all()
         @employer = Employer.all()

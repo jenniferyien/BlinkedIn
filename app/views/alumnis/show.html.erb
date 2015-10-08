@@ -39,11 +39,10 @@
 
 <p>
   <strong>Skills:</strong>
-  <% @alumni.endorsements.map do |e| %>
-    <% if e.user == @alumni.user %>
-      <%= e.skill.name %>
-    <% end %>
-  <% end %>
+  <% @alumni.skills.each do |s| %>
+    <button class="btn btn-primary btn-xs" type="button"><%= s.name %> <span class="badge">42</span>
+</button>
+  <% end  %>
 </p>
 
 <p>
@@ -63,12 +62,12 @@
         <h4 class="modal-title"><%= "Esther's Résumé"%></h4>
       </div><!-- /.modal-header -->
       <div class="modal-body">
-        <iframe name="I1" id="if1" width="100%" height="500" style="visibility:visible" src="http://www.homestyler.com/"></iframe>
+        <iframe name="I1" id="if1" width="100%" height="500" style="visibility:visible" src="https://robots.io"></iframe>
       </div><!-- /.modal-body -->
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
-        <a class="iframe" href="https://robots.io">OR VISIT MY PROJECT</a>
+        <a href="https://robots.io" class="btn btn-primary btn-md active" role="button">OR VISIT PROJECT</a>
+        <!-- <button type="button" class="btn btn-primary btn-sm"href="">OR VISIT PROJECT</button><a class="iframe" href="https://robots.io">OR VISIT MY PROJECT</a> -->
       </div><!-- /.modal-footer -->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
