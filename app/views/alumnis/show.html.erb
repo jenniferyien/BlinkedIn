@@ -49,18 +49,19 @@
   <%= @alumni.fun_fact %>
 </p>
 
-<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
-  View Résumé
+<div data-toggle="modal" data-target="#myModal">
+  <strong>View Project 1 - Résumé</strong><br>
+  <img src="https://debbarrett.com/wp-content/uploads/2013/10/homestyler.jpg"  width="20%" height="20%">
 </button>
 <div class="modal fade" id="myModal">
   <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-content modal-lg">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><%= "Esther's Résumé"%></h4>
       </div><!-- /.modal-header -->
       <div class="modal-body">
-        <iframe name="I1" id="if1" width="100%" height="700" style="visibility:visible" src="https://robots.io/wp/"></iframe>
+        <iframe name="I1" id="if1" width="100%" height="500" style="visibility:visible" src="http://www.homestyler.com/"></iframe>
       </div><!-- /.modal-body -->
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
@@ -70,6 +71,8 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<br>
 
 <%= link_to 'Edit', edit_alumni_path(@alumni) %> |
 <%= link_to 'Back', alumnis_path %>
