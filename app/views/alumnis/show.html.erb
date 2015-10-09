@@ -39,9 +39,8 @@
 
 <p>
   <strong>Skills:</strong>
-  <% skills = @alumni.endorsements.map {|e| name: e.skill.name, count: }
   <% @alumni.skills.each do |s| %>
-    <button class="btn btn-primary btn-xs" type="button"><%= s.name %> <span class="badge">42</span>
+    <button class="btn btn-primary btn-xs" type="button"><%= s.name %> <span class="badge"><%= Endorsement.count{ |e| e.skill_id == s.id && e.alumni_id == @alumni.id } %></span>
 </button>
   <% end  %>
 </p>

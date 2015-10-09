@@ -41,7 +41,6 @@ class AlumnisController < ApplicationController
   # PATCH/PUT /alumnis/1
   # PATCH/PUT /alumnis/1.json
   def update
-    binding.pry
     respond_to do |format|
       if @alumni.update(alumni_params)
         format.html { redirect_to @alumni, notice: 'Alumni was successfully updated.' }
@@ -71,7 +70,7 @@ class AlumnisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alumni_params
-      params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :avatar, projects_attributes: [:alumni_id, :name, :url, :description])
+      params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :avatar, projects_attributes: [:alumni_id, :name, :url, :description], endorsement_attributes: [:alumni_id, :user_id, :skill_id])
     end
 
 end
