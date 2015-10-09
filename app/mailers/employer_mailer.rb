@@ -6,8 +6,8 @@ class EmployerMailer < ApplicationMailer
        :address => "smtp.gmail.com",
        :port => 587,
        :domain => "gmail.com",
-       :user_name => "esther.kristen@gmail.com"
-       :password =>  "MDBtWKrMxqL3TBsEz6A9"
+       :user_name => ENV['GMAIL_USERNAME'],
+       :password =>  ENV['GMAIL_PASSWORD'],
        :authentication => "plain",
        :enable_starttls_auto => true
     }

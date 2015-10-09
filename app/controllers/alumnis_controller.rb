@@ -52,6 +52,10 @@ class AlumnisController < ApplicationController
     end
   end
 
+  #EmployerMailer.initial_contact(user).deliver_now
+
+  
+
   # DELETE /alumnis/1
   # DELETE /alumnis/1.json
   def destroy
