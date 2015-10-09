@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/account_type', to:'sessions#account_type'
   get '/search/', to: 'users#search'
 
+
   root 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
