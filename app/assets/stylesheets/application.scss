@@ -82,3 +82,38 @@
   background-repeat: no-repeat;
 
 }
+
+.navbar.navbar-default {
+  margin-bottom: 0;
+}
+
+//main page image display
+#mainpageimage {
+  height: 550px;
+}
+.panel1 {
+  position: absolute;
+  bottom: 300px;
+  left: 300px;
+  color: #262626;
+}
+
+#secondpageimage {
+  height: 550px;
+}
+.panel2 {
+  position: absolute;
+  bottom: 350px;
+  left: 50px;
+  color: #262626;
+}
+
+#lastpageimage {
+  height: 550px;
+}
+.panel3 {
+  position: absolute;
+  bottom: 440px;
+  left: 0px;
+  color: #262626;
+}
