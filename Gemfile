@@ -26,7 +26,7 @@ gem 'devise'
 gem 'chosen-rails'
 gem "compass-rails", github: "Compass/compass-rails", branch: "master"
 # gem for implementing React.js in our Rails App
-gem 'react-rails', '~> 1.0'
+gem 'react-rails', '~> 1.3.1'
 #this is to turn our analytics into charts
 gem 'chart-js-rails'
 # Use jquery as the JavaScript library
