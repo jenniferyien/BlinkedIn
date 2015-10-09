@@ -10,6 +10,9 @@ class AlumnisController < ApplicationController
   # GET /alumnis/1
   # GET /alumnis/1.json
   def show
+    @alumni = Alumni.find_by(id: params[:id])
+    @alumni.view += 1
+    @alumni.save
   end
 
   # GET /alumnis/new
@@ -72,7 +75,8 @@ class AlumnisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alumni_params
-      params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :resume, :avatar, projects_attributes: [:id, :alumni_id, :name, :url, :description, :_destroy])
+
+      params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :resume, :avatar, { skill_ids: [] }, projects_attributes: [:id, :alumni_id, :name, :url, :description, :_destroy] )
     end
 
 end

@@ -5,6 +5,17 @@
 @import "variables";
 
 // giving company icon a boarder
-h1 img {
+.panel.panel-default img {
+  margin-top: 5%;
   border: 1px solid $gray-base;
+}
+.panel.panel-default.profile {
+  text-align: center;
+}
+
+p.panel-body {
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+  padding-bottom: 10px;
 }

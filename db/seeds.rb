@@ -75,6 +75,6 @@ DesiredSkill.create([
 	])
 
 # Some fake projects
-Project.create(alumni_id: alum_dennis.id, name: "awesome project", url: "www.google.com", description:"made this in 5 minutes")
-Project.create(alumni_id: alum_dennis.id, name: "bad project", url: "www.yahoo.com", description:"made this in 1 minutes")
+Project.create(alumni_id: alum_dennis.id, name: "awesome project", url: "https://www.reddit.com", description:"made this in 5 minutes")
+Project.create(alumni_id: alum_dennis.id, name: "bad project", url: "https://www.reddit.com", description:"made this in 1 minutes")
 

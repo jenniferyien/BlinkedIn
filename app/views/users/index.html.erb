@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
 <div class="jumbotron">
-  <h1>BlinkedIn. <small>Get hired in the blink of an eye.</small></h1>
+  <h1 class='slogan'>BlinkedIn. <br> <small>Get hired in the blink of an eye.</small></h1>
 </div>
 
+<div class ='container'>
+  <p id="notice"><%= notice %></p>
 <h3>Some of our wonderful users:</h3>
 <ul>
   <% @users.each do |user| %>
@@ -20,4 +21,5 @@
 <h1>Awesomeness of our Group</h1>
  <canvas id="myChart" width="500" height="400"></canvas>
 
- <canvas id="myBarChart" width="500" height="400"></canvas>
+ <!-- <canvas id="myBarChart" width="500" height="400"></canvas> -->
+</div>
