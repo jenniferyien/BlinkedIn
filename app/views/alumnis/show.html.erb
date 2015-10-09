@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <%= image_tag @alumni.avatar %>
@@ -80,7 +81,7 @@
         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
         <a target="_blank" href="<%= p.url %>" class="btn btn-primary btn-md active" role="button">Go directly to</a>
 
-      
+
       </div><!-- /.modal-footer -->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -89,3 +90,4 @@
 <br/>
 <%= link_to 'Edit', edit_alumni_path(@alumni), class: 'btn btn-success' %>
 <%= link_to 'Back', users_path, class: 'btn btn-success' %>
+</div>
