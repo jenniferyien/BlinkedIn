@@ -29,6 +29,8 @@ gem "compass-rails", github: "Compass/compass-rails", branch: "master"
 gem 'react-rails', '~> 1.3.1'
 #this is to turn our analytics into charts
 gem 'chart-js-rails'
+# this is for passing data into javascript for chart
+gem 'gon'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'fancybox2-rails'

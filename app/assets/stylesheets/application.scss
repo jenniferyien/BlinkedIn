@@ -67,7 +67,7 @@
   filter: grayscale(1) invert(1);
 }
 
-
+// account_type icons
 .col-md-4.employer {
   min-height:250px;
   background-image: image-url('the-job.png');
@@ -81,4 +81,21 @@
   background-size: contain;
   background-repeat: no-repeat;
 
+}
+
+// remove navbar default margin
+.navbar.navbar-default {
+  margin-bottom: 0;
+}
+
+// homepage image
+.jumbotron {
+  background-image: image-url('type.jpg');
+  background-size: cover;
+  height: 500px;
+}
+.slogan {
+  margin-top: 25%;
+  margin-right: 5%;
+  text-align: right;
 }
