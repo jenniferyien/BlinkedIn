@@ -5,6 +5,11 @@ json.alumnis do
     json.last_name alumni.user.last_name
     json.location_city alumni.location.city
     json.location_state alumni.location.state
+    json.skills do
+      json.array!(alumni.skills) do |skill|
+        json.extract! skill, :name
+      end
+    end
   end
 end
 json.employers do
@@ -14,19 +19,8 @@ json.employers do
     json.location_state employer.location.state
   end
 end
-json.endorsement do
-  json.array!(@endorsement) do |endorse|
-    json.extract! endorse, :skill_id, :alumni_id, :user_id
-    json.skill endorse.skill.name
-    json.first_name endorse.user.first_name
-    json.last_name endorse.user.last_name
-    json.view endorse.alumni.view
-    json.id endorse.alumni.id
-    json.user_id endorse.alumni.user_id
-    json.about endorse.alumni.about
-    json.position endorse.alumni.position
-    json.location_city endorse.alumni.location.city
-    json.location_state endorse.alumni.location.state
-    json.avatar endorse.alumni.avatar
+json.locations do
+  json.array!(@locations) do |location|
+    json.extract! location, :city, :state
   end
 end
