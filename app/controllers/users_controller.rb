@@ -17,8 +17,21 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @employers = Employer.all
     @alumnis = Alumni.all
+    @employers = Employer.all
+
+    @usernum = User.all.count
+    gon.watch.usernum = @usernum
+    @alumninum = Alumni.all.count
+    gon.watch.alumninum = @alumninum
+    @employernum = Employer.all.count
+    gon.watch.employernum = @employernum
+
+    @everything = [
+      @usernum, @alumninum, @employernum
+    ]
+    gon.watch.everything = @everything
+
   end
 
   # GET /users/1

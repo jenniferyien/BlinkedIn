@@ -10,6 +10,9 @@ class AlumnisController < ApplicationController
   # GET /alumnis/1
   # GET /alumnis/1.json
   def show
+    @alumni = Alumni.find_by(id: params[:id])
+    @alumni.view += 1
+    @alumni.save
   end
 
   # GET /alumnis/new
