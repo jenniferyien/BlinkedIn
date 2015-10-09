@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :employers
   resources :alumnis
   resources :users
+  resources :endorsements
 
   get '/auth/google_oauth2/callback', to: 'sessions#oauth'
   get '/logout', to: 'sessions#logout'

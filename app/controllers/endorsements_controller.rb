@@ -19,6 +19,7 @@ class EndorsementsController < ApplicationController
 		redirect_to '/', notice: 'Employer was successfully destroyed.'
 	end
 
+
 private
 
 	def set_endorsement
