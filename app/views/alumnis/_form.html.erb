@@ -40,14 +40,10 @@
     <%= f.text_field :position, class: 'form-control' %>
   </div>
 
-  <%= f.fields_for :endorsement do |s| %>
-    <div class="field form-group">
-      <%= s.label :skill, "Skills" %><br/>
-      <select class="chosen-select" id="skill" multiple>
-        <%= options_from_collection_for_select Skill.all, :id, :name, @alumni.skills.map {|s| s.id } %>
-      </select>
-    </div>
-  <% end %>
+  <div class="field form-group">
+    <%= f.label :skill_ids, "Skills" %><br/>
+    <%= f.select :skill_ids, options_from_collection_for_select(Skill.all, :id, :name, @alumni.skills.map {|s| s.id }), {}, {multiple: true, class: "chosen-select"} %>
+  </div>
 
   <div class="field form-group">
     <%= f.label :fun_fact %><br>

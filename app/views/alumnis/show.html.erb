@@ -1,4 +1,6 @@
-<div class ='container'>
+
+<div class="container">
+
 <p id="notice"><%= notice %></p>
 <div>
   <div class="col-md-4">
@@ -12,7 +14,13 @@
       </small></small></h4>
     </div>
     <div class='panel panel-default'>
-      <p><strong>Looking for the following skills:</strong></p>
+      <p><strong>Skills:</strong></p>
+      <p>
+      <% @alumni.skills.each do |s| %>
+        <button class="btn btn-primary btn-xs" type="button"><%= s.name %> <span class="badge"><%= Endorsement.count{ |e| e.skill_id == s.id && e.alumni_id == @alumni.id } %></span>
+    </button>
+      <% end  %>
+      </p>
     </div>
   </div>
   <div class='col-md-8'>
