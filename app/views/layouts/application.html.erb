@@ -54,8 +54,8 @@
                       <% elsif Employer.find_by(user_id: current_user.id) %>
                         <% @employer = Employer.find_by(user_id: current_user.id) %>
                           <li><a href=<%="/employers/#{@employer.id}"%> >Profile</a></li>
-                      <% else %>
-                          <li><a href=<%="/account_type"%> >Profile</a></li>
+                        <% else %>
+                            <li><a href=<%="/account_type"%> >Profile</a></li>
                       <% end %>
                       <li><a href='/logout'>Logout</a></li>
                     <% end %>
