@@ -1,6 +1,27 @@
 var Search = React.createClass({
+	getInitialState: function(){
+		return {alumnis: [],
+						employers: []
+			};
+	},
+	componentDidMount: function(){
+		this.setState({alumnis: this.props.alumnis, employers: this.props.employers})
+	},
+	handleChange: function(event){
+		var sort = React.findDOMNode(this.refs.sort).value;
+		console.log(sort);
+		var sortedA = this.props.alumnis.filter(function(value){
+			return ( value.location_city == sort);
+		});
+		console.log(sortedA)
+		var sortedE = this.props.employers.filter(function(value){
+			return ( value.location_city == sort);
+		});
+		this.setState({alumnis: sortedA, employers: sortedE})
+	},
+
 	render: function(){
-		var people = this.props.alumnis.map(function(alumni){
+		var people = this.state.alumnis.map(function(alumni){
 				return(
 				<div className="panel panel-default">
 					<div className="panel-heading" role="tab" id="headingOne">
@@ -23,7 +44,7 @@ var Search = React.createClass({
 				</div>
 				)
 		});
-		var company = this.props.employers.map(function(employer){
+		var company = this.state.employers.map(function(employer){
 				return(
 					<div className="panel panel-default">
 						<div className="panel-heading" role="tab" id="headingOne">
@@ -46,36 +67,26 @@ var Search = React.createClass({
 					</div>
 				)
 		});
-		var endorsement = this.props.endorsement.map(function(endorse){
-				return(
-				<div className="panel panel-default">
-					<div className="panel-heading" role="tab" id="headingOne">
-						<h4 className="panel-title">
-							<a role="button" data-toggle="collapse" data-parent="#accordion" href={"#collapseOne"+endorse.user_id}>
-							{endorse.first_name} {endorse.last_name} | <small>{endorse.location_city}, {endorse.location_state}</small></a>
-						</h4>
-					</div>
-					<div id={"collapseOne"+endorse.user_id} className="panel-collapse collapse in" role="tabpanel">
-						<div className="panel-body">
-							<div className='col-md-6'>
-								 <p><strong>Title:</strong> {endorse.position}</p>
-								 <p><strong>About:</strong> {endorse.about}</p>s
-							</div>
-							<div className='col-md-3'>
-								<p><a href={"/alumnis/"+endorse.user_id} className="btn btn-link" role="button">Check Profile</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				)
-		});
-		console.log(endorsement)
+		var locations = this.props.locations.map(function(location){
+			return (
+				<option value={location.city}> {location.city}, {location.state}</option>
+			)
+		})
 		return(
-					<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-								{people}
-								{company}
-								{endorsement}
-					</div>
+			<div>
+				<div>
+						<select name="locationpick" form="locationselect" ref='sort' onChange={this.handleChange}>
+							<option value=""></option>
+							{locations}
+						</select>
+
+				</div>
+				<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							{people}
+							{company}
+				</div>
+			</div>
+
 		)
 }
 });
