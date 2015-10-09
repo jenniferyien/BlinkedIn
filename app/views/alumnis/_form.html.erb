@@ -74,14 +74,16 @@
 
 <div class="container">
   <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Project 1</a>
-        </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse in">
-        <div class="panel-body"><%= f.fields_for :project do |u|%>
+    <%= f.fields_for :projects do |u|%>
+      <%= u.check_box :_destroy %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Project 1</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">
                 <div>
                   <%= u.hidden_field :alumni_id, value: @alumni.id %>
                 </div>
@@ -94,7 +96,11 @@
                 <div>
                   <%= u.label :url %><br>
                   <%= u.text_field :url %>
-                </div>
+                </div><br>
+
+                <div>
+                  <%=link_to 'Create Project Thumbnail', projects_path(@show, :format => :pdf) %>
+                </div><br>
 
                 <div>
                   <%= u.label :description %><br>
@@ -102,83 +108,13 @@
                 </div>
 
                 <div class="actions">
-                <%= u.submit %>
+                  <%= u.submit %>
                 </div>
-              <% end %></div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Project 2</a>
-        </h4>
-      </div>
-      <div id="collapse2" class="panel-collapse collapse">
-        <div class="panel-body"><%= f.fields_for :project do |u|%>
-                <div>
-                  <%= u.hidden_field :alumni_id, value: @alumni.id %>
-                </div>
-
-                <div>
-                  <%= u.label :name %><br>
-                  <%= u.text_field :name %>
-                </div>
-
-                <div>
-                  <%= u.label :url %><br>
-                  <%= u.text_field :url %>
-                </div>
-
-                <div>
-                  <%= u.label :description %><br>
-                  <%= u.text_field :description %>
-                </div>
-
-                <div class="actions">
-                <%= u.submit %>
-                </div>
-              <% end %></div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Project 3</a>
-        </h4>
-      </div>
-      <div id="collapse3" class="panel-collapse collapse">
-        <div class="panel-body"><%= f.fields_for :project do |u|%>
-                <div>
-                  <%= u.hidden_field :alumni_id, value: @alumni.id %>
-                </div>
-
-                <div>
-                  <%= u.label :name %><br>
-                  <%= u.text_field :name %>
-                </div>
-
-                <div>
-                  <%= u.label :url %><br>
-                  <%= u.text_field :url %>
-                </div>
-
-                <div>
-                  <%= u.label :description %><br>
-                  <%= u.text_field :description %>
-                </div>
-
-                <div class="actions">
-                <%= u.submit %>
-                </div>
-              <% end %></div>
-      </div>
-    </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>
-
-
-
-
-
 
 <% end %>
