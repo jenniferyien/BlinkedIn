@@ -41,7 +41,6 @@ class AlumnisController < ApplicationController
   # PATCH/PUT /alumnis/1
   # PATCH/PUT /alumnis/1.json
   def update
-    binding.pry
     respond_to do |format|
       if @alumni.update(alumni_params)
         format.html { redirect_to @alumni, notice: 'Alumni was successfully updated.' }
