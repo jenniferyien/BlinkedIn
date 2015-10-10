@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20151009191837) do
     t.text     "q2"
     t.text     "q3"
     t.string   "position"
-    t.integer  "view"
+    t.integer  "view",        default: 0
     t.text     "fun_fact"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "avatar"
     t.string   "attachment"
     t.string   "resume"
