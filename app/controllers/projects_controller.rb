@@ -10,6 +10,23 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+        # url respond_to do |format|
+        #   format.html
+        #   format.pdf do
+        #     render pdf: "project_img"   # Excluding ".pdf" extension.
+        #   end
+        # end
+            format.pdf do
+              # @example_text = "some text"
+              render :pdf => "file_name",
+                     :template => 'offers/show.pdf.erb',
+                     :layout => 'pdf',
+                     :footer => {
+                        :center => "Center",
+                        :left => "Left",
+                        :right => "Right"
+                     }
+      end
   end
 
   # GET /projects/new

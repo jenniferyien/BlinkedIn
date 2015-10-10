@@ -18,11 +18,13 @@ class AlumnisController < ApplicationController
   # GET /alumnis/new
   def new
     @alumni = Alumni.new
+    @alumni.projects.build
   end
 
   # GET /alumnis/1/edit
   def edit
     @alumni = Alumni.find(params[:id])
+    @alumni.projects.build
   end
 
   # POST /alumnis
@@ -73,7 +75,8 @@ class AlumnisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alumni_params
-      params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :avatar, { skill_ids: [] }, :project )
+
+      params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :resume, :avatar, { skill_ids: [] }, projects_attributes: [:id, :alumni_id, :name, :url, :description, :_destroy] )
     end
 
 end
