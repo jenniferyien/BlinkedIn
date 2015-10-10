@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "employers/show", type: :view do
+RSpec.describe 'employers/show', type: :view do
   before(:each) do
     @employer = assign(:employer, Employer.create!(
-      :location => nil,
-      :user => nil,
-      :company_name => "Company Name",
-      :website => "Website",
-      :company_type => "Company Type",
-      :description => "MyText"
+                                    location: nil,
+                                    user: nil,
+                                    company_name: 'Company Name',
+                                    website: 'Website',
+                                    company_type: 'Company Type',
+                                    description: 'MyText'
     ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(//)
     expect(rendered).to match(//)

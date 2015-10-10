@@ -7,9 +7,8 @@ class EndorsementsController < ApplicationController
 	def create
     @endorsement = Endorsement.new(endorsement_params)
     @endorsement.user_id = current_user.id
-    if @employer.save
-      notice: 'Successfully endorsed.'
-    else
+		if @employer.save
+      redirect_to root_path, notice: 'Successfully endorsed.'
       render :new
     end
   end

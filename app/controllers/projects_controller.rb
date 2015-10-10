@@ -10,6 +10,23 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    # url respond_to do |format|
+    #   format.html
+    #   format.pdf do
+    #     render pdf: "project_img"   # Excluding ".pdf" extension.
+    #   end
+    # end
+    format.pdf do
+      # @example_text = "some text"
+      render pdf: 'file_name',
+             template: 'offers/show.pdf.erb',
+             layout: 'pdf',
+             footer: {
+               center: 'Center',
+               left: 'Left',
+               right: 'Right'
+             }
+    end
   end
 
   # GET /projects/new
@@ -62,13 +79,14 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.require(:project).permit(:alumni_id, :name, :url, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def project_params
+    params.require(:project).permit(:alumni_id, :name, :url, :description)
+  end
 end

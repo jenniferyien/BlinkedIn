@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
@@ -8,7 +7,7 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '~> 5.0'
-#this gem is for icons
+# this gem is for icons
 gem 'font-awesome-sass', '~> 4.4.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -24,10 +23,10 @@ gem 'simple_form'
 gem 'devise'
 # for nicer dropdowns
 gem 'chosen-rails'
-gem "compass-rails", github: "Compass/compass-rails", branch: "master"
+gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
 # gem for implementing React.js in our Rails App
 gem 'react-rails', '~> 1.3.1'
-#this is to turn our analytics into charts
+# this is to turn our analytics into charts
 gem 'chart-js-rails'
 # this is for passing data into javascript for chart
 gem 'gon'
@@ -42,15 +41,18 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'rubocop'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth-google-oauth2'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

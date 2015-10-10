@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe "alumnis/show", type: :view do
+RSpec.describe 'alumnis/show', type: :view do
   before(:each) do
     @alumni = assign(:alumni, Alumni.create!(
-      :user => nil,
-      :location => nil,
-      :about => "MyText",
-      :q1 => "MyText",
-      :q2 => "MyText",
-      :q3 => "MyText",
-      :position => "Position",
-      :view => 1,
-      :fun_fact => "MyText"
+                                user: nil,
+                                location: nil,
+                                about: 'MyText',
+                                q1: 'MyText',
+                                q2: 'MyText',
+                                q3: 'MyText',
+                                position: 'Position',
+                                view: 1,
+                                fun_fact: 'MyText'
     ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(//)
     expect(rendered).to match(//)

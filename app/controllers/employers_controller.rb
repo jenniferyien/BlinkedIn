@@ -63,13 +63,14 @@ class EmployersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_employer
-      @employer = Employer.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def employer_params
-      params.require(:employer).permit(:location_id, :user_id, :company_name, :website, :company_type, :description, :avatar)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_employer
+    @employer = Employer.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def employer_params
+    params.require(:employer).permit(:location_id, :user_id, :company_name, :website, :company_type, :description, :avatar)
+  end
 end
