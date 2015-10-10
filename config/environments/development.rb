@@ -53,6 +53,7 @@ Rails.application.configure do
      :enable_starttls_auto => true
   }
 
+  config.assets.initialize_on_precompile = false
   config.action_mailer.default_url_options = { host: "localhost:3000"}
 
   # Raises error for missing translations

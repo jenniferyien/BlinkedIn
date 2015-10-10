@@ -18,7 +18,7 @@ function usercount(numberOfUsers) {
       ]
     }
       var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(alumni)
-      // var myBar = new Chart(document.getElementById("myBarChart").getContext("2d")).Bar(alumni)
+       var myBar = new Chart(document.getElementById("myBarChart").getContext("2d")).Bar(alumni)
     };
 
 

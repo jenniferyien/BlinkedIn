@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
-gem 'pg'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '~> 5.0'
@@ -22,6 +21,7 @@ gem 'fog'
 gem 'figaro'
 gem 'simple_form'
 gem 'devise'
+gem 'pg'
 # for nicer dropdowns
 gem 'chosen-rails'
 gem "compass-rails", github: "Compass/compass-rails", branch: "master"
@@ -53,7 +53,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth-google-oauth2'
 
 group :production do
-  gem 'pg'
+
   gem 'rails_12factor'
 end
 
