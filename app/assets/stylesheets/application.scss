@@ -84,18 +84,24 @@
 }
 
 // remove navbar default margin
-.navbar.navbar-default {
+nav.navbar {
   margin-bottom: 0;
 }
 
+div.container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 // homepage image
-.jumbotron {
+div.jumbotron {
   background-image: image-url('type.jpg');
+  background-position: center;
   background-size: cover;
   height: 500px;
+  padding-top: 150px;
 }
-.slogan {
-  margin-top: 25%;
-  margin-right: 5%;
-  text-align: right;
+
+button.btn, a.btn, input.btn {
+  border-radius: 3px;
 }
