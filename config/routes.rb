@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-
-
   resources :projects
   resources :resumes
   resources :employers
@@ -11,9 +8,8 @@ Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback', to: 'sessions#oauth'
   get '/logout', to: 'sessions#logout'
-  get '/account_type', to:'sessions#account_type'
+  get '/account_type', to: 'sessions#account_type'
   get '/search/', to: 'users#search'
-
 
   root 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.

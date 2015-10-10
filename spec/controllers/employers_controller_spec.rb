@@ -19,141 +19,139 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe EmployersController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # Employer. As you add validations to Employer, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # EmployersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all employers as @employers" do
+  describe 'GET #index' do
+    it 'assigns all employers as @employers' do
       employer = Employer.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:employers)).to eq([employer])
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested employer as @employer" do
+  describe 'GET #show' do
+    it 'assigns the requested employer as @employer' do
       employer = Employer.create! valid_attributes
-      get :show, {:id => employer.to_param}, valid_session
+      get :show, { id: employer.to_param }, valid_session
       expect(assigns(:employer)).to eq(employer)
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new employer as @employer" do
+  describe 'GET #new' do
+    it 'assigns a new employer as @employer' do
       get :new, {}, valid_session
       expect(assigns(:employer)).to be_a_new(Employer)
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested employer as @employer" do
+  describe 'GET #edit' do
+    it 'assigns the requested employer as @employer' do
       employer = Employer.create! valid_attributes
-      get :edit, {:id => employer.to_param}, valid_session
+      get :edit, { id: employer.to_param }, valid_session
       expect(assigns(:employer)).to eq(employer)
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Employer" do
-        expect {
-          post :create, {:employer => valid_attributes}, valid_session
-        }.to change(Employer, :count).by(1)
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new Employer' do
+        expect do
+          post :create, { employer: valid_attributes }, valid_session
+        end.to change(Employer, :count).by(1)
       end
 
-      it "assigns a newly created employer as @employer" do
-        post :create, {:employer => valid_attributes}, valid_session
+      it 'assigns a newly created employer as @employer' do
+        post :create, { employer: valid_attributes }, valid_session
         expect(assigns(:employer)).to be_a(Employer)
         expect(assigns(:employer)).to be_persisted
       end
 
-      it "redirects to the created employer" do
-        post :create, {:employer => valid_attributes}, valid_session
+      it 'redirects to the created employer' do
+        post :create, { employer: valid_attributes }, valid_session
         expect(response).to redirect_to(Employer.last)
       end
     end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved employer as @employer" do
-        post :create, {:employer => invalid_attributes}, valid_session
+    context 'with invalid params' do
+      it 'assigns a newly created but unsaved employer as @employer' do
+        post :create, { employer: invalid_attributes }, valid_session
         expect(assigns(:employer)).to be_a_new(Employer)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:employer => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+        post :create, { employer: invalid_attributes }, valid_session
+        expect(response).to render_template('new')
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested employer" do
-        employer = Employer.create! valid_attributes
-        put :update, {:id => employer.to_param, :employer => new_attributes}, valid_session
-        employer.reload
-        skip("Add assertions for updated state")
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
       end
 
-      it "assigns the requested employer as @employer" do
+      it 'updates the requested employer' do
         employer = Employer.create! valid_attributes
-        put :update, {:id => employer.to_param, :employer => valid_attributes}, valid_session
+        put :update, { id: employer.to_param, employer: new_attributes }, valid_session
+        employer.reload
+        skip('Add assertions for updated state')
+      end
+
+      it 'assigns the requested employer as @employer' do
+        employer = Employer.create! valid_attributes
+        put :update, { id: employer.to_param, employer: valid_attributes }, valid_session
         expect(assigns(:employer)).to eq(employer)
       end
 
-      it "redirects to the employer" do
+      it 'redirects to the employer' do
         employer = Employer.create! valid_attributes
-        put :update, {:id => employer.to_param, :employer => valid_attributes}, valid_session
+        put :update, { id: employer.to_param, employer: valid_attributes }, valid_session
         expect(response).to redirect_to(employer)
       end
     end
 
-    context "with invalid params" do
-      it "assigns the employer as @employer" do
+    context 'with invalid params' do
+      it 'assigns the employer as @employer' do
         employer = Employer.create! valid_attributes
-        put :update, {:id => employer.to_param, :employer => invalid_attributes}, valid_session
+        put :update, { id: employer.to_param, employer: invalid_attributes }, valid_session
         expect(assigns(:employer)).to eq(employer)
       end
 
       it "re-renders the 'edit' template" do
         employer = Employer.create! valid_attributes
-        put :update, {:id => employer.to_param, :employer => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+        put :update, { id: employer.to_param, employer: invalid_attributes }, valid_session
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested employer" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested employer' do
       employer = Employer.create! valid_attributes
-      expect {
-        delete :destroy, {:id => employer.to_param}, valid_session
-      }.to change(Employer, :count).by(-1)
+      expect do
+        delete :destroy, { id: employer.to_param }, valid_session
+      end.to change(Employer, :count).by(-1)
     end
 
-    it "redirects to the employers list" do
+    it 'redirects to the employers list' do
       employer = Employer.create! valid_attributes
-      delete :destroy, {:id => employer.to_param}, valid_session
+      delete :destroy, { id: employer.to_param }, valid_session
       expect(response).to redirect_to(employers_url)
     end
   end
-
 end

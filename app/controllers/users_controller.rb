@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-
   def search
-      if params[:search]
-        @alumnis = Alumni.where("name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR city LIKE ? OR state LIKE ? OR about LIKE ? OR q1 LIKE ? OR q2 LIKE ? OR q3 LIKE ? OR fun_fact LIKE ? OR position LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:user, :location, :skills)
-        @employers = Employer.where("city LIKE ? OR state LIKE ? OR company_name LIKE ? OR company_type LIKE ? OR website LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:location)
-        @locations = Location.all
-      else
-        @alumni = Alumni.all()
-        @employer = Employer.all()
-      end
+    if params[:search]
+      @alumnis = Alumni.where('name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR city LIKE ? OR state LIKE ? OR about LIKE ? OR q1 LIKE ? OR q2 LIKE ? OR q3 LIKE ? OR fun_fact LIKE ? OR position LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:user, :location, :skills)
+      @employers = Employer.where('city LIKE ? OR state LIKE ? OR company_name LIKE ? OR company_type LIKE ? OR website LIKE ? OR description LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:location)
+      @locations = Location.all
+    else
+      @alumni = Alumni.all
+      @employer = Employer.all
+    end
     # @alumni = Alumni.all
   end
+
   # GET /users
   # GET /users.json
   def index
@@ -31,7 +31,6 @@ class UsersController < ApplicationController
       @usernum, @alumninum, @employernum
     ]
     gon.watch.everything = @everything
-
   end
 
   # GET /users/1
@@ -51,10 +50,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-
     @user = User.new(user_params)
-    @user.auth_hash = request.env["omniauth.auth"]
-    @user.uid = request.env["omniauth.auth"]['uid']
+    @user.auth_hash = request.env['omniauth.auth']
+    @user.uid = request.env['omniauth.auth']['uid']
 
     respond_to do |format|
       if @user.save
@@ -92,17 +90,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-      params.require(:user).permit(:first_name, :last_name, :email, :auth_hash, :uid)
-
-
-
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :auth_hash, :uid)
+  end
 end
