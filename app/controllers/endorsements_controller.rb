@@ -8,7 +8,7 @@ class EndorsementsController < ApplicationController
     @endorsement = Endorsement.new(endorsement_params)
     @endorsement.user_id = current_user.id
     if @employer.save
-      # notice: 'Successfully endorsed.'
+      notice: 'Successfully endorsed.'
     else
       render :new
     end
@@ -16,8 +16,7 @@ class EndorsementsController < ApplicationController
 
 	def destroy
 		@endorsement.destroy
-		redirect_to '/'
-		# notice: 'Employer was successfully destroyed.'
+		redirect_to '/', notice: 'Employer was successfully destroyed.'
 	end
 
 
