@@ -114,54 +114,8 @@ div.jumbotron {
   position: relative;
 }
 
-.slogan {
-  position: absolute;
-  margin-top: 22%;
-  margin-left: 40%;
-  text-align: right;
-  opacity: 1;
-}
-.slogan small {
-  color: $gray-dark;
-}
 
-@media (max-width: 1100px) {
-  .slogan {
-    margin-left: 25%;
-  }
-}
-
-
-@media (max-width: 860px) {
-  .slogan {
-    margin-left: 15%;
-  }
-}
-
-@media (max-width: 767px) {
-  .slogan {
-    margin-top: 43%;
-
-    font-size: 50px;
-
-  }
-}
-@media (max-width: 561px) {
-  .slogan {
-    margin-top: 53%;
-    margin-left: 9%;
-    font-size: 45px;
-  }
-}
-
-@media (max-width: 469px) {
-  .slogan {
-    margin-top: 83%;
-    margin-left: 9%;
-    font-size: 37px;
-  }
-  padding-top: 150px;
-  .col-xs-8 {
+.col-xs-8 {
     float: right;
+    padding-top: 150px;
   }
-}
