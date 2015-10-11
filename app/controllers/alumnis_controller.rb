@@ -21,14 +21,23 @@ class AlumnisController < ApplicationController
 
   # GET /alumnis/new
   def new
+    @alumniperson = Alumni.find_by(user_id: current_user.id)
+    @employerperson = Employer.find_by(user_id: current_user.id)
+    if @alumniperson || @employerperson
+      redirect_to '/'
+    else
     @alumni = Alumni.new
     @alumni.user_id = current_user.id
     @alumni.projects.build
+    end
   end
 
   # GET /alumnis/1/edit
   def edit
     @alumni = Alumni.find(params[:id])
+    if current_user.id != @alumni.user_id
+      redirect_to '/'
+    end
     @alumni.projects.build
   end
 

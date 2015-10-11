@@ -14,11 +14,21 @@ class EmployersController < ApplicationController
 
   # GET /employers/new
   def new
+    @alumniperson = Alumni.find_by(user_id: current_user.id)
+    @employerperson = Employer.find_by(user_id: current_user.id)
+    if @alumniperson || @employerperson
+      redirect_to '/'
+    else
     @employer = Employer.new
+  end
   end
 
   # GET /employers/1/edit
   def edit
+    @employer = Employer.find(params[:id])
+    if current_user.id != @employer.user_id
+      redirect_to '/'
+    end
   end
 
   # POST /employers

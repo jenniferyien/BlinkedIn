@@ -22,6 +22,11 @@ class SessionsController < ApplicationController
   end
 
   def account_type
+    @alumniperson = Alumni.find_by(user_id: current_user.id)
+    @employerperson = Employer.find_by(user_id: current_user.id)
+    if @alumniperson || @employerperson
+      redirect_to '/'
+    end
   end
 
   def logout
