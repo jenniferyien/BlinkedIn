@@ -13,6 +13,7 @@
  *= require chosen
  *= require_self
  *= require fancybox
+ *= require show-pages
  *= require_tree .
  */
 
@@ -27,6 +28,13 @@
 
 .form-control.input-sm {
   height: 28px;
+}
+// keep corner radiuses
+button.btn, a.btn, input.btn {
+  border-radius: 3px;
+}
+div.panel, .avatar {
+  border-radius: 4px;
 }
 
 // blinking class images
@@ -88,15 +96,20 @@
 }
 
 // remove navbar default margin
-.navbar.navbar-default {
+nav.navbar {
   margin-bottom: 0;
 }
 
-// homepage image
-.jumbotron {
+div.container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+// homepage header
+div.jumbotron {
   background-image: image-url('type.jpg');
+  background-position: center top;
   background-size: cover;
-  background-image: no-repeat 0 50%;
   height: 500px;
   position: relative;
 }
@@ -146,5 +159,9 @@
     margin-top: 83%;
     margin-left: 9%;
     font-size: 37px;
+  }
+  padding-top: 150px;
+  .col-xs-8 {
+    float: right;
   }
 }

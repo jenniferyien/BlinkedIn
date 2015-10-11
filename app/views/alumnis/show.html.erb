@@ -1,46 +1,61 @@
 <div class="container">
 
 <p id="notice"><%= notice %></p>
-<div>
-  <div class="col-md-4">
-    <div class='panel panel-default profile'>
-      <img src= <%= @alumni.avatar.url %> />
+<div class="row">
+  <div class="col-md-7">
+    <div class="title-box clearfix">
+      <% if @alumni.avatar.url %>
+        <img src="<%= @alumni.avatar.url %>" class="avatar" />
+      <% else %>
+        <img src="/default-avatar/colors.jpg" class="avatar" />
+      <% end %>
 
-      <h4 > <%= @alumni.user.first_name %> <small><small>
+      <div class="col-info">
+        <h1 class="title"><%= @alumni.user.first_name %> <%= @alumni.user.last_name %></h1>
+        <h3><%= @alumni.position %></h3>
+        <h4><%= "#{@alumni.location.city}, #{@alumni.location.state}" %></h4>
+
         <% if current_user.id == @alumni.user_id %>
-        <%= link_to 'Edit', edit_alumni_path(@alumni) %>
+          <%= link_to 'Edit', edit_alumni_path(@alumni), class: 'btn btn-default btn-sm' %>
         <% end %>
-      </small></small></h4>
+
+      </div>
     </div>
-    <div class='panel panel-default'>
-      <p><strong>Skills:</strong></p>
-      <p>
+    <% if @alumni.skills %>
+    <div class='clearfix'>
+      <h4>Skills</h4>
       <% @alumni.skills.each do |s| %>
-        <button class="btn btn-primary btn-xs" type="button"><%= s.name %> <span class="badge"><%= Endorsement.count{ |e| e.skill_id == s.id && e.alumni_id == @alumni.id } %></span>
-    </button>
+        <button class="btn btn-primary btn-xs skill" type="button">
+          <%= s.name %>
+          <span class="badge"><%= Endorsement.count{ |e| e.skill_id == s.id && e.alumni_id == @alumni.id } %></span>
+        </button>
       <% end  %>
+    </div>
+    <% end %>
+
+  </div>
+  <div class='col-md-5'>
+    <div class='profile-info'>
+      <p><strong class="text-uppercase">About <%= @alumni.user.first_name %></strong><br/>
+        <%= @alumni.about %>
+      </p>
+      <p><strong class="text-uppercase">"What are your greatest strengths?"</strong><br/>
+        <%= @alumni.q1 %>
+      </p>
+      <p><strong class="text-uppercase">"Have you read any good books lately?"</strong><br/>
+        <%= @alumni.q2 %>
+      </p>
+      <p><strong class="text-uppercase">"Can you do a handstand?"</strong><br/>
+        <%= @alumni.q3 %>
+      </p>
+      <p><strong class="text-uppercase">Fun Fact</strong><br/>
+        <%= @alumni.fun_fact %>
       </p>
     </div>
   </div>
-  <div class='col-md-8'>
-      <div class= 'panel panel-info'>
-          <p class='panel-heading'><strong>Title:</strong></p>
-          <p class='panel-body'><%= @alumni.position %></p>
-          <p class='panel-heading'><strong>Location:</strong></p>
-          <p class='panel-body'><%= "#{@alumni.location.city} #{@alumni.location.state}" %></p>
-          <p class='panel-heading'><strong>About:</strong></p>
-          <p class='panel-body'><%= @alumni.about %></p>
-          <p class='panel-heading'><strong>Fun Fact:</strong></p>
-          <p class='panel-body'> <%= @alumni.fun_fact %></p>
-          <p class='panel-heading'><strong>What are your greatest strengths?</strong></p>
-          <p class='panel-body'> <%= @alumni.q1 %></p>
-          <p class='panel-heading'><strong>Have you read any good books lately?</strong></p>
-          <p class='panel-body'> <%= @alumni.q2 %></p>
-          <p class='panel-heading'><strong>Can you do a handstand?</strong></p>
-          <p class='panel-body'> <%= @alumni.q3 %></p>
-      </div>
-  </div>
 </div>
+<p class="text-right"><%= @alumni.user.first_name %>'s page has been viewed <%= @alumni.view %> times.</p>
+
 
 <p>
   <% @alumni.projects.each do |p| %>
@@ -75,9 +90,6 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-  
-<% end %>
-    <br/>
 
-    <%= link_to 'Back', users_path, class: 'btn btn-success' %>
+<% end %>
 </div>
