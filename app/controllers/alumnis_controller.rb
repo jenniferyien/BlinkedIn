@@ -11,13 +11,18 @@ class AlumnisController < ApplicationController
   # GET /alumnis/1.json
   def show
     @alumni = Alumni.find_by(id: params[:id])
-    @alumni.view += 1
+    if @alumni.view
+      @alumni.view += 1
+    else
+      @alumni.view = 1
+    end
     @alumni.save
   end
 
   # GET /alumnis/new
   def new
     @alumni = Alumni.new
+    @alumni.user_id = current_user.id
     @alumni.projects.build
   end
 

@@ -13,6 +13,7 @@
  *= require chosen
  *= require_self
  *= require fancybox
+ *= require show-pages
  *= require_tree .
  */
 
@@ -97,15 +98,21 @@ div.container {
   margin-bottom: 20px;
 }
 
-// homepage image
+// homepage header
 div.jumbotron {
   background-image: image-url('type.jpg');
-  background-position: center;
+  background-position: center top;
   background-size: cover;
-  height: 500px;
   padding-top: 150px;
+  .col-xs-8 {
+    float: right;
+  }
 }
 
+// keep corner radiuses
 button.btn, a.btn, input.btn {
   border-radius: 3px;
+}
+div.panel, .avatar {
+  border-radius: 4px;
 }

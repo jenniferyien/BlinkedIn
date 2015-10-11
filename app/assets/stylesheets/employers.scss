@@ -1,21 +1,3 @@
 // Place all the styles related to the employers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-@import "variables";
-
-// giving company icon a boarder
-.panel.panel-default img {
-  margin-top: 5%;
-  border: 1px solid $gray-base;
-}
-.panel.panel-default.profile {
-  text-align: center;
-}
-
-p.panel-body {
-  margin: 0;
-  padding: 0;
-  padding-left: 15px;
-  padding-bottom: 10px;
-}
