@@ -70,8 +70,9 @@
 <div class="container">
   <div class="panel-group" id="accordion">
     <%= f.fields_for :projects do |u|%>
-      <h6>Check to delete</h6>
-      <%= u.check_box :_destroy %>
+      <h6>Check to delete
+      <%= u.check_box :_destroy, class: "checkbox" %>
+      </h6>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
