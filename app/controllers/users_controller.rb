@@ -33,6 +33,8 @@ class UsersController < ApplicationController
     gon.watch.everything = @everything
 
     @javascript = Endorsement.where(skill_id: 1).count
+    @skills = Endorsement.group(:skill_id).count
+    @skillname = Skill.all
 
 
   end
