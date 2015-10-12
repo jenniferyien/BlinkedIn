@@ -24,7 +24,7 @@ end
 skills = [
   'Javascript', 'React.js', 'Ruby', 'Ruby on Rails', 'Angular', 'JQuery',
   'JSON', 'CoffeeScript', 'Digital Ocean', 'Jasmine', 'Git', 'Backbone',
-  'Three.js', 'CSS', 'Bootstrap', 'Sinatra', 'AJAX', 'PostgreSQL', 'SQL',
+  'Three.js', 'HTML/CSS', 'Bootstrap', 'Sinatra', 'AJAX', 'PostgreSQL', 'SQL',
   'RSPEC', 'Bash', 'C++', 'C', 'C#', 'Python', 'ImageMagik', 'Materialize',
   'MATLAB', 'WebGL', 'Pascal', 'Perl', 'UNITY', 'Visual Basic', 'Redis',
   'Varnish', 'Puffing Billing', 'Heroku', 'JCrop', 'OAuth', 'Selenium',

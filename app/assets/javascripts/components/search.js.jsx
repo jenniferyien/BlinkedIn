@@ -52,7 +52,24 @@ var Search = React.createClass({
 		});
 		this.setState({alumnis: sortedA, employers: sortedE});
 	},
-
+	// filtering search based on if alumni has the skill
+	handleSkillSelect: function(event){
+		event.preventDefault;
+		var skillsort = React.findDOMNode(this.refs.sortskill).value;
+		console.log(skillsort)
+		var skillSelected = this.props.alumnis.filter(function(skill){
+			var skills = skill.skills.map(function(name){
+				if (name.id == skillsort){
+				return(true)
+			}
+			});
+			console.log(skills)
+			return (skills.indexOf(true) > -1)
+		});
+		console.log(skillSelected);
+		this.setState({alumnis: skillSelected, employers: []});
+	},
+	// rendering the view
 	render: function(){
 		var people = this.state.alumnis.map(function(alumni){
 				return(
@@ -105,7 +122,12 @@ var Search = React.createClass({
 			return (
 				<option value={location.id}> {location.city}, {location.state}</option>
 			)
-		})
+		});
+		var skills = this.props.skills.map(function(skill){
+			return (
+				<option value={skill.id}> {skill.name} </option>
+			)
+		});
 		return(
 			<div className="row">
 				<div className='panel panel-default'>
@@ -122,10 +144,17 @@ var Search = React.createClass({
 
 					 		<div className="col-xs-3">
 								<select className="form-control input-sm" name="locationpick" form="locationselect" ref='sort' onChange={this.handleChange}>
-									<option>Sort by Location</option>
+									<option>Filter by Location</option>
 									{locations}
 								</select>
 							</div>
+							<div className="col-xs-3">
+								<select className="form-control input-sm" name="skillpick" form="skillselect" ref='sortskill' onChange={this.handleSkillSelect}>
+									<option>Filter by Alumni Skill</option>
+									{skills}
+								</select>
+							</div>
+
 							<a href='#' className='btn btn-sm badge pull-right' ref='unsort' onClick={this.handleClick}>Unsort</a>
 					</div>
 				</div>
