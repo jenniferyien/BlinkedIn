@@ -1,27 +1,31 @@
 $(function(){
-
-    var numberOfUsers = gon.watch('everything', usercount)
-
+    // grabbing value from ruby
+    var numberOfUsers = gon.watch('everything', usercount);
+    // function for usercount passing in data from ruby
     function usercount(numberOfUsers) {
       var alumni = [
         {
             value: numberOfUsers[0],
             color:"#F7464A",
             highlight: "#FF5A5E",
-            label: "Registered Alumni"
+            label: "Alumni"
         },
         {
             value: numberOfUsers[1],
             color: "#46BFBD",
             highlight: "#5AD3D1",
-            label: "Registered Employers"
+            label: "Employers"
         } ]
+          // pass in value of alumni into chart
           var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Pie(alumni)
         };
 
-      function skills(){
+      // grabbing value from ruby for skills
+      var skillsvalue = gon.watch("allskills", popularskills);
+      // function to pass in value for skills
+      function popularskills(skillsvalue){
         var data = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["jQuery", "Javascript", "Rails", "HTML/CSS", "React.js", "AJAX", "PostgreSQL"],
             datasets: [
                 {
                     label: "My First dataset",
@@ -29,20 +33,12 @@ $(function(){
                     strokeColor: "rgba(220,220,220,0.8)",
                     highlightFill: "rgba(220,220,220,0.75)",
                     highlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(151,187,205,0.5)",
-                    strokeColor: "rgba(151,187,205,0.8)",
-                    highlightFill: "rgba(151,187,205,0.75)",
-                    highlightStroke: "rgba(151,187,205,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
+                    data: [skillsvalue[0], skillsvalue[1], skillsvalue[2], skillsvalue[3], skillsvalue[4], skillsvalue[5], skillsvalue[6]]
                 }
             ]
         };
-        // var myBar = new Chart(document.getElementById("myBarChart").getContext("2d")).Bar(alumni)
-
+          // pass in value of skills into chart
+        var myBar = new Chart(document.getElementById("myBarChart").getContext("2d")).Bar(data)
       };
 
 });
