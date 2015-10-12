@@ -27,16 +27,24 @@ class UsersController < ApplicationController
     @employernum = Employer.all.count
     gon.watch.employernum = @employernum
 
+    # compile all data in array
     @everything = [
       @alumninum, @employernum
     ]
     gon.watch.everything = @everything
 
-    @javascript = Endorsement.where(skill_id: 1).count
-    @skills = Endorsement.group(:skill_id).count
-    @skillname = Skill.all
+    # info for bar chart, each skill count
+    @javascript = Endorsement.where(skill_id: "1").count
+    gon.watch.javascript = @javascript
+    @rails = Endorsement.where(skill_id: "4").count
+    @react = Endorsement.where(skill_id: "2").count
+    @ajax = Endorsement.where(skill_id: "17").count
 
+    @jquery = Endorsement.where(skill_id: "6").count
+    @htmlcss = Endorsement.where(skill_id: "14").count
+    @psql = Endorsement.where(skill_id: "18").count
 
+    # compile all data in array
   end
 
   # GET /users/1
