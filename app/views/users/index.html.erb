@@ -12,18 +12,6 @@
 <div class ='container'>
 
   <p id="notice"><%= notice %></p>
-<h3>Some of our wonderful users:</h3>
-<ul>
-  <% @users.each do |user| %>
-    <% if @alumnis.any?{|a| a.user_id == user.id} %>
-      <% alumni = Alumni.find_by(user_id: user.id)%>
-      <li><%= link_to "#{user.first_name} #{user.last_name} (Alum)", alumni_path(alumni.id) %></li>
-    <% elsif @employers.any?{|a| a.user_id == user.id} %>
-      <% employer = Employer.find_by(user_id: user.id)%>
-      <li><%= link_to "#{user.first_name} #{user.last_name} (Employer)", employer_path(employer.id) %></li>
-    <% end %>
-  <% end %>
-</ul>
 
   <div class='col-md-6'>
     <h1>Number of Users Registered</h1>
