@@ -110,8 +110,24 @@ div.jumbotron {
   background-image: image-url('type.jpg');
   background-position: center top;
   background-size: cover;
-  padding-top: 150px;
-  .col-xs-8 {
+  padding-top: 13%;
+  .col-xs-7 {
     float: right;
+  }
+}
+
+h1.title {
+  font-weight: 400;
+}
+
+@media (max-width: $screen-md-min) {
+  h2.slogan {
+    font-size: 1.7em;
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+  h2.slogan {
+    font-size: 1.5em;
   }
 }
