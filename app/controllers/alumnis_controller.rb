@@ -1,12 +1,12 @@
 class AlumnisController < ApplicationController
   before_action :set_alumni, only: [:show, :edit, :update, :destroy]
-  before_filter :allow_iframe_requests
+  # before_filter :allow_iframe_requests
+  after_action :allow_iframe, only: :iframe
 
 
-
-  def allow_iframe_requests
-  response.headers.delete('X-Frame-Options')
-  end
+  # def allow_iframe_requests
+  # response.headers.delete('X-Frame-Options')
+  # end
   # GET /alumnis
   # GET /alumnis.json
   def index
@@ -98,4 +98,9 @@ class AlumnisController < ApplicationController
   def alumni_params
     params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :resume, :avatar, { skill_ids: [] }, projects_attributes: [:id, :alumni_id, :name, :url, :description, :_destroy])
   end
+
+  def allow_iframe
+  response.headers['X-Frame-Options'] = "ALLOWALL"
+  end
+
 end
