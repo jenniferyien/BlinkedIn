@@ -8,7 +8,7 @@ json.alumnis do
     json.location_state alumni.location.state
     json.skills do
       json.array!(alumni.skills) do |skill|
-        json.extract! skill, :name
+        json.extract! skill, :id, :name
       end
     end
   end
@@ -24,5 +24,10 @@ end
 json.locations do
   json.array!(@locations) do |location|
     json.extract! location, :id, :city, :state
+  end
+end
+json.skills do
+  json.array!(@skills) do |skill|
+    json.extract! skill, :id, :name
   end
 end
