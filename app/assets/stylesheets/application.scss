@@ -110,8 +110,10 @@ div.jumbotron {
   background-image: image-url('type.jpg');
   background-position: center top;
   background-size: cover;
-  height: 500px;
-  position: relative;
+  padding-top: 150px;
+  .col-xs-8 {
+    float: right;
+  }
 }
 
 
