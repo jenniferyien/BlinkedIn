@@ -80,19 +80,14 @@ div.panel, .avatar {
 }
 
 // account_type icons
-.col-md-4.employer {
-  min-height:250px;
-  background-image: image-url('the-job.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-
+.account_type{
+  text-align: center;
 }
-.col-md-4.alumni {
-  min-height:250px;
-  background-image: image-url('internships.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-
+.col-md-6.employer {
+  text-align: center;
+}
+.col-md-6.alumni {
+  text-align: center;
 }
 
 // remove navbar default margin
