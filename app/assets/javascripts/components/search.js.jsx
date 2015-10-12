@@ -56,17 +56,14 @@ var Search = React.createClass({
 	handleSkillSelect: function(event){
 		event.preventDefault;
 		var skillsort = React.findDOMNode(this.refs.sortskill).value;
-		console.log(skillsort)
 		var skillSelected = this.props.alumnis.filter(function(skill){
 			var skills = skill.skills.map(function(name){
 				if (name.id == skillsort){
 				return(true)
 			}
 			});
-			console.log(skills)
 			return (skills.indexOf(true) > -1)
 		});
-		console.log(skillSelected);
 		this.setState({alumnis: skillSelected, employers: []});
 	},
 	// rendering the view

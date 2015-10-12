@@ -54,6 +54,7 @@ class AlumnisController < ApplicationController
     @alumni.user_id = current_user.id
     respond_to do |format|
       if @alumni.save
+        SkillMatchMailer.new_match(@alumni).deliver
         format.html { redirect_to @alumni, notice: 'Alumni was successfully created.' }
         format.json { render :show, status: :created, location: @alumni }
       else
@@ -68,6 +69,7 @@ class AlumnisController < ApplicationController
   def update
     respond_to do |format|
       if @alumni.update(alumni_params)
+        SkillMatchMailer.new_match(@alumni).deliver
         format.html { redirect_to @alumni, notice: 'Alumni was successfully updated.' }
         format.json { render :show, status: :ok, location: @alumni }
       else
