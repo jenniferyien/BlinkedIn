@@ -1,3 +1,33 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.panel.panel-success {
+  border-color: #D5F0E3;
+}
+.panel-heading.success{
+  background-color: #D5F0E3;
+  color: black;
+  border-color: #D5F0E3;
+}
+
+.panel.panel-warning{
+  border-color: #EEE6C2;
+}
+.panel-heading.warning {
+  background-color: #EEE6C2;
+  color: black;
+  border-color: #EEE6C2;
+}
+
+//searchbar filter responsive height
+@media (max-width: 995px) {
+  .panel-heading.search {
+  height: 80px;
+}
+}
+@media (max-width: 440px) {
+  .panel-heading.search {
+  height: 100px;
+}
+}

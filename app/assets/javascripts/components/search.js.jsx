@@ -70,15 +70,15 @@ var Search = React.createClass({
 	render: function(){
 		var people = this.state.alumnis.map(function(alumni){
 				return(
-				<div className="panel panel-default">
-					<div className="panel-heading" role="tab" id="headingOne">
+				<div className="panel panel-success">
+					<div className="panel-heading success" role="tab" id="headingOne">
 						<h4 className="panel-title">
 							<a role="button" data-toggle="collapse" data-parent="#accordion" href={"#collapseOne"+alumni.user_id}>
 							{alumni.first_name} {alumni.last_name} | <small>{alumni.location_city}, {alumni.location_state}</small></a>
 							<span className="badge pull-right">Views: {alumni.view}</span>
 						</h4>
 					</div>
-					<div id={"collapseOne"+alumni.user_id} className="panel-collapse collapse in" role="tabpanel">
+					<div id={"collapseOne"+alumni.user_id} className="panel-collapse collapse" role="tabpanel">
 						<div className="panel-body">
 							<div className='col-md-6'>
 								 <p><strong>Title:</strong> {alumni.position}</p>
@@ -94,14 +94,14 @@ var Search = React.createClass({
 		});
 		var company = this.state.employers.map(function(employer){
 				return(
-					<div className="panel panel-default">
-						<div className="panel-heading" role="tab" id="headingOne">
+					<div className="panel panel-warning">
+						<div className="panel-heading warning" role="tab" id="headingOne">
 							<h4 className="panel-title">
 								<a role="button" data-toggle="collapse" data-parent="#accordion" href={"#collapseOne"+employer.user_id}>
 								{employer.company_name} | <small>{employer.location_city}, {employer.location_state}</small></a>
 							</h4>
 						</div>
-						<div id={"collapseOne"+employer.user_id} className="panel-collapse collapse in" role="tabpanel">
+						<div id={"collapseOne"+employer.user_id} className="panel-collapse collapse" role="tabpanel">
 							<div className="panel-body">
 								<div className='col-md-6'>
 									 <p><strong>Company Type:</strong> {employer.company_type}</p>
@@ -128,14 +128,14 @@ var Search = React.createClass({
 		return(
 			<div className="row">
 				<div className='panel panel-default'>
-					<div className='panel-heading'>
+					<div className='panel-heading search'>
 							<div className="btn-group btn-group-sm" role="group">
 								<div class="form-group">
-										<a href='#' className='btn btn-xs btn-primary' ref='employeronly' onClick={this.handleEmployer}>Employers Only</a> &#160;
-										<a href='#' className='btn btn-xs btn-primary' ref='alumnionly' onClick={this.handleAlumni}>Alumni Only</a>
 										<label>&#160; Alumni View Count Sort &#160;</label>
 										<button type="button" onClick={this.handleViewMCount} className="btn btn-primary btn-xs btn-default"><span className="glyphicon glyphicon-arrow-up span12"></span></button>
-										<button type="button" onClick={this.handleViewLCount} className="btn btn-primary btn-xs btn-default"><span className="glyphicon glyphicon-arrow-down span12"></span></button>
+										<button type="button" onClick={this.handleViewLCount} className="btn btn-primary btn-xs btn-default"><span className="glyphicon glyphicon-arrow-down span12"></span></button>&#160;
+										<a href='#' className='btn btn-xs btn-primary' ref='alumnionly' onClick={this.handleAlumni}>Alumni Only</a> &#160;
+									  <a href='#' className='btn btn-xs btn-primary' ref='employeronly' onClick={this.handleEmployer}>Employers Only</a>
 								</div>
 							</div>
 
@@ -152,8 +152,9 @@ var Search = React.createClass({
 								</select>
 							</div>
 
-							<a href='#' className='btn btn-sm badge pull-right' ref='unsort' onClick={this.handleClick}>Unsort</a>
-					</div>
+							<a href='#' className='btn btn-sm badge pull-right' ref='unsort' onClick={this.handleClick}>Unfilter</a>
+
+						</div>
 				</div>
 
 				<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
