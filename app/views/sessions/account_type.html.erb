@@ -1,5 +1,15 @@
-<h1>Choose an account type:</h1>
 <div class='container'>
-<a href='/employers/new'><div class='col-md-4 employer'></div></a>
-<a href='/alumnis/new'><div class='col-md-4 alumni'></div></a>
+<h1 class='account_type'>Choose an account type</h1>
+<div class='col-md-6 employer'>
+<a href='/employers/new'>
+  <%= image_tag('the-job.png') %>
+  <h3>Employers</h3>
+</a>
+</div>
+<div class='col-md-6 alumni'>
+<a href='/alumnis/new'>
+  <%= image_tag('internships.png') %>
+  <h3>Alumnis</h3>
+</a>
+</div>
 </div>

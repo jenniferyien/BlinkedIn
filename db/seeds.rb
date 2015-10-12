@@ -48,6 +48,16 @@ Employer.create(location_id: 3, user_id: eli.id, company_name: 'The Dark Fellas'
 Employer.create(location_id: 4, user_id: frank.id, company_name: 'Footers', website: 'www.TheLongDog.com', company_type: 'Consulting', description: 'Home of the tastiest longeset hotdogs.')
 Employer.create(location_id: 5, user_id: mike.id, company_name: 'Who?', website: 'www.WhoIsMike.com', company_type: 'Startup', description: 'We aim to find out who Mike Jones is!')
 
+DesiredSkill.create([
+  { employer_id: emp_ben.id, skill_id: 1 },
+  { employer_id: emp_ben.id, skill_id: 3 },
+  { employer_id: emp_ben.id, skill_id: 4 },
+  { employer_id: emp_harry.id, skill_id: 2 },
+  { employer_id: emp_harry.id, skill_id: 7 }
+])
+
+
+
 # Populating users who are Alumnis
 bobby = User.create(first_name: 'Bobby', last_name: 'King', email: 'TheKing@gmail.com')
 pan = User.create(first_name: 'Pan', last_name: 'Wangperawong', email: 'PanDaMan@gmail.com')
@@ -66,13 +76,7 @@ Endorsement.create([
   { user_id: pan.id, alumni_id: alum_bobby.id, skill_id: 3 },
   { user_id: bobby.id, alumni_id: alum_pan.id, skill_id: 5 }])
 
-DesiredSkill.create([
-  { employer_id: emp_ben.id, skill_id: 1 },
-  { employer_id: emp_ben.id, skill_id: 3 },
-  { employer_id: emp_ben.id, skill_id: 4 },
-  { employer_id: emp_harry.id, skill_id: 2 },
-  { employer_id: emp_harry.id, skill_id: 7 }
-])
+
 
 # Some fake projects
 Project.create(alumni_id: alum_dennis.id, name: 'awesome project', url: 'https://www.reddit.com', description: 'made this in 5 minutes')
