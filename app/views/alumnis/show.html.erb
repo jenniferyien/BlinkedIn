@@ -60,8 +60,9 @@
 
   <div data-toggle="modal" data-target="#myModal-<%=p.id%>">
     <strong><%= p.name %></strong><br>
-   <!--  <img src="https://debbarrett.com/wp-content/uploads/2013/10/homestyler.jpg"  width="20%" height="20%"> -->
-    <iframe src="<%=p.url%>" style="transform: scale(1);"></iframe>
+    <a href="<%=p.url%>" target="_blank">Go to project</a>
+  
+    <iframe width="100%" height="400"src="<%=p.url%>" style="transform: scale(1);"></iframe>
     <p><%= p.description %></p>
   </div>
   <div class="modal fade" id="myModal-<%=p.id%>">
@@ -71,13 +72,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"> "<%= p.name %>"</h4>
         </div><!-- /.modal-header -->
-        <div class="modal-body">
-          <iframe name="I1" id="if1" width="100%" height="500" style="visibility:visible" src="<%= p.url %>"></iframe>
-        </div><!-- /.modal-body -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-          <a target="_blank" href="<%= p.url %>" class="btn btn-primary btn-md active" role="button">Go directly to</a>
-        </div><!-- /.modal-footer -->
+        
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
