@@ -60,7 +60,7 @@
   </div>
 
   <div class="actions form-group">
-    <%= f.submit "save", class: "btn btn-success" %>
+    <%= f.submit "Save", class: "btn btn-success" %>
   </div>
 
   <!-- make the form for the project like the location -->
@@ -70,11 +70,12 @@
 <div class="container">
   <div class="panel-group" id="accordion">
     <%= f.fields_for :projects do |u|%>
+      <h6>Check to delete</h6>
       <%= u.check_box :_destroy %>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Project 1</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Projects</a>
             </h4>
           </div>
           <div id="collapse1" class="panel-collapse collapse in">
