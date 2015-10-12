@@ -1,6 +1,12 @@
 class AlumnisController < ApplicationController
   before_action :set_alumni, only: [:show, :edit, :update, :destroy]
+  before_filter :allow_iframe_requests
 
+
+
+  def allow_iframe_requests
+  response.headers.delete('X-Frame-Options')
+  end
   # GET /alumnis
   # GET /alumnis.json
   def index
