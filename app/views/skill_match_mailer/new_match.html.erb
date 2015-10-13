@@ -3,5 +3,5 @@ Alumni,<%= " #{@alumni.user.first_name} #{@alumni.user.last_name}" %>, that join
 </p>
 <p>
 To checkout Alumni: <%= " #{@alumni.user.first_name} #{@alumni.user.last_name}" %>,
-<%= link_to "Click here for Alumni page", @alumni %>
+<%= link_to "Click here for Alumni page", alumni_path(@alumni.id) %>
 </p>
