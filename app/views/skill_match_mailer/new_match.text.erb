@@ -1,0 +1,4 @@
+Alumni,<%= " #{@alumni.user.first_name} #{@alumni.user.last_name}" %>, that joined has matched the skills that you are looking for.
+
+To checkout Alumni: <%= " #{@alumni.user.first_name} #{@alumni.user.last_name}" %>,
+<%= link_to "Click here for Alumni page", alumni_path(@alumni.id) %>

@@ -1,6 +1,59 @@
-
 <div class="container">
 
 <p id="notice"><%= notice %></p>
-<%= react_component "EProfile", company:@employer.company_name, avatar:@employer.avatar,location:@employer.location, id:@employer.id, description:@employer.description, website:@employer.website, type:@employer.company_type%>
+<div class="row">
+  <div class="col-md-7">
+    <div class="title-box clearfix">
+      <% if @employer.avatar.url %>
+        <img src="<%= @employer.avatar.url %>" class="avatar" />
+      <% else %>
+        <img src="/default-avatar/colors.jpg" class="avatar" />
+      <% end %>
+
+      <div class="col-info">
+        <h1 class="title"><%= @employer.company_name %></h1>
+  
+        <h4><%= "#{@employer.location.city}, #{@employer.location.state}" %></h4>
+
+
+        <% if current_user%>
+          <% if current_user.id == @employer.user_id %>
+            <%= link_to 'Edit', edit_employer_path(@employer), class: 'btn btn-default btn-sm' %>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+  <div class='col-md-5'>
+    <div class='profile-info'>
+     
+      <p><strong class="text-uppercase">Company Website</strong><br/>
+      	<%= @employer.website %>
+       
+      </p>
+      <p><strong class="text-uppercase">Company Type</strong><br/>
+        <%= @employer.company_type %>
+      </p>
+      <p><strong class="text-uppercase">Company Description</strong><br/>
+        <%= @employer.description %>
+      </p>
+    </div>
+  </div>
 </div>
+ <% if @employer.skills %>
+    <div class='clearfix'>
+      <h4>Skills</h4>
+      <% @employer.skills.each do |s| %>
+        <button class="btn btn-primary btn-xs skill" type="button">
+          <%= s.name %>
+        </button>
+      <% end  %>
+    </div>
+    <% end %>
+
+</div>
+
+
+   

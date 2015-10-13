@@ -3,9 +3,6 @@ class EmployersController < ApplicationController
 
   # GET /employers
   # GET /employers.json
-  def index
-    @employers = Employer.all
-  end
 
   # GET /employers/1
   # GET /employers/1.json
@@ -39,7 +36,7 @@ class EmployersController < ApplicationController
 
     respond_to do |format|
       if @employer.save
-        format.html { redirect_to @employer, notice: 'Employer was successfully created.' }
+        format.html { redirect_to "/employers/#{@employer.id}", notice: 'Employer was successfully created.' }
         format.json { render :show, status: :created, location: @employer }
       else
         format.html { render :new }
@@ -53,7 +50,7 @@ class EmployersController < ApplicationController
   def update
     respond_to do |format|
       if @employer.update(employer_params)
-        format.html { redirect_to @employer, notice: 'Employer was successfully updated.' }
+        format.html { redirect_to "/employers/#{@employer.id}", notice: 'Employer was successfully updated.' }
         format.json { render :show, status: :ok, location: @employer }
       else
         format.html { render :edit }

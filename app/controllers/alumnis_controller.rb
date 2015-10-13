@@ -9,9 +9,6 @@ class AlumnisController < ApplicationController
   # end
   # GET /alumnis
   # GET /alumnis.json
-  def index
-    @alumnis = Alumni.all
-  end
 
   # GET /alumnis/1
   # GET /alumnis/1.json
@@ -52,29 +49,20 @@ class AlumnisController < ApplicationController
   def create
     @alumni = Alumni.new(alumni_params)
     @alumni.user_id = current_user.id
-    respond_to do |format|
+
       if @alumni.save
-        format.html { redirect_to @alumni, notice: 'Alumni was successfully created.' }
-        format.json { render :show, status: :created, location: @alumni }
-      else
-        format.html { render :new }
-        format.json { render json: @alumni.errors, status: :unprocessable_entity }
+          redirect_to alumni_path(@alumni.id), notice: 'Alumni was successfully created.'
       end
-    end
+    SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # PATCH/PUT /alumnis/1
   # PATCH/PUT /alumnis/1.json
   def update
-    respond_to do |format|
       if @alumni.update(alumni_params)
-        format.html { redirect_to @alumni, notice: 'Alumni was successfully updated.' }
-        format.json { render :show, status: :ok, location: @alumni }
-      else
-        format.html { render :edit }
-        format.json { render json: @alumni.errors, status: :unprocessable_entity }
+        redirect_to alumni_path(@alumni.id), notice: 'Alumni was successfully created.'
       end
-    end
+    SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # DELETE /alumnis/1
