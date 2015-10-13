@@ -4,3 +4,11 @@
 <p id="notice"><%= notice %></p>
 <%= react_component "EProfile", company:@employer.company_name, avatar:@employer.avatar,location:@employer.location, id:@employer.id, description:@employer.description, website:@employer.website, type:@employer.company_type%>
 </div>
+
+<div class='clearfix'>
+      <% @employer.skills.each do |s| %>
+        <button class="btn btn-primary btn-xs skill" type="button">
+          <%= s.name %>
+        </button>
+      <% end  %>
+</div>
