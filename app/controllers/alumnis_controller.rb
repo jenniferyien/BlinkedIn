@@ -53,7 +53,6 @@ class AlumnisController < ApplicationController
       if @alumni.save
           redirect_to alumni_path(@alumni.id), notice: 'Alumni was successfully created.'
       end
-    SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # PATCH/PUT /alumnis/1
@@ -62,7 +61,6 @@ class AlumnisController < ApplicationController
       if @alumni.update(alumni_params)
         redirect_to alumni_path(@alumni.id), notice: 'Alumni was successfully created.'
       end
-    SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # DELETE /alumnis/1
