@@ -74,15 +74,12 @@
 </div>
 <p class="text-right"><%= @alumni.user.first_name %>'s page has been viewed <%= @alumni.view %> times.</p>
 
-<<<<<<< HEAD
-<% @alumni.projects.take(4).each do |p| %>
+
 
   <div class="project-name" data-toggle="modal" data-target="#myModal-<%=p.id%>">
     <h2 ><%= p.name %></h2>
     <a href="<%=p.url%>" target="_blank"><%=p.url%></a>
-=======
-<!-- Modal for the resume. -->
->>>>>>> goose
+
 
   <div style="float:right;" class="imageContainer" data-toggle="modal" data-target="#myModal-<%=@alumni.id%>">
     <strong><%= Resume %></strong><br>
