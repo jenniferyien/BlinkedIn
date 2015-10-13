@@ -52,19 +52,33 @@ var Search = React.createClass({
 		});
 		this.setState({alumnis: sortedA, employers: sortedE});
 	},
-
+	// filtering search based on if alumni has the skill
+	handleSkillSelect: function(event){
+		event.preventDefault;
+		var skillsort = React.findDOMNode(this.refs.sortskill).value;
+		var skillSelected = this.props.alumnis.filter(function(skill){
+			var skills = skill.skills.map(function(name){
+				if (name.id == skillsort){
+				return(true)
+			}
+			});
+			return (skills.indexOf(true) > -1)
+		});
+		this.setState({alumnis: skillSelected, employers: []});
+	},
+	// rendering the view
 	render: function(){
 		var people = this.state.alumnis.map(function(alumni){
 				return(
-				<div className="panel panel-default">
-					<div className="panel-heading" role="tab" id="headingOne">
+				<div className="panel panel-success">
+					<div className="panel-heading success" role="tab" id="headingOne">
 						<h4 className="panel-title">
 							<a role="button" data-toggle="collapse" data-parent="#accordion" href={"#collapseOne"+alumni.user_id}>
 							{alumni.first_name} {alumni.last_name} | <small>{alumni.location_city}, {alumni.location_state}</small></a>
 							<span className="badge pull-right">Views: {alumni.view}</span>
 						</h4>
 					</div>
-					<div id={"collapseOne"+alumni.user_id} className="panel-collapse collapse in" role="tabpanel">
+					<div id={"collapseOne"+alumni.user_id} className="panel-collapse collapse" role="tabpanel">
 						<div className="panel-body">
 							<div className='col-md-6'>
 								 <p><strong>Title:</strong> {alumni.position}</p>
@@ -80,14 +94,14 @@ var Search = React.createClass({
 		});
 		var company = this.state.employers.map(function(employer){
 				return(
-					<div className="panel panel-default">
-						<div className="panel-heading" role="tab" id="headingOne">
+					<div className="panel panel-warning">
+						<div className="panel-heading warning" role="tab" id="headingOne">
 							<h4 className="panel-title">
 								<a role="button" data-toggle="collapse" data-parent="#accordion" href={"#collapseOne"+employer.user_id}>
 								{employer.company_name} | <small>{employer.location_city}, {employer.location_state}</small></a>
 							</h4>
 						</div>
-						<div id={"collapseOne"+employer.user_id} className="panel-collapse collapse in" role="tabpanel">
+						<div id={"collapseOne"+employer.user_id} className="panel-collapse collapse" role="tabpanel">
 							<div className="panel-body">
 								<div className='col-md-6'>
 									 <p><strong>Company Type:</strong> {employer.company_type}</p>
@@ -105,29 +119,42 @@ var Search = React.createClass({
 			return (
 				<option value={location.id}> {location.city}, {location.state}</option>
 			)
-		})
+		});
+		var skills = this.props.skills.map(function(skill){
+			return (
+				<option value={skill.id}> {skill.name} </option>
+			)
+		});
 		return(
 			<div className="row">
 				<div className='panel panel-default'>
-					<div className='panel-heading'>
+					<div className='panel-heading search'>
 							<div className="btn-group btn-group-sm" role="group">
 								<div class="form-group">
-										<a href='#' className='btn btn-xs btn-primary' ref='employeronly' onClick={this.handleEmployer}>Employers Only</a> &#160;
-										<a href='#' className='btn btn-xs btn-primary' ref='alumnionly' onClick={this.handleAlumni}>Alumni Only</a>
 										<label>&#160; Alumni View Count Sort &#160;</label>
 										<button type="button" onClick={this.handleViewMCount} className="btn btn-primary btn-xs btn-default"><span className="glyphicon glyphicon-arrow-up span12"></span></button>
-										<button type="button" onClick={this.handleViewLCount} className="btn btn-primary btn-xs btn-default"><span className="glyphicon glyphicon-arrow-down span12"></span></button>
+										<button type="button" onClick={this.handleViewLCount} className="btn btn-primary btn-xs btn-default"><span className="glyphicon glyphicon-arrow-down span12"></span></button>&#160;
+										<a href='#' className='btn btn-xs btn-primary' ref='alumnionly' onClick={this.handleAlumni}>Alumni Only</a> &#160;
+									  <a href='#' className='btn btn-xs btn-primary' ref='employeronly' onClick={this.handleEmployer}>Employers Only</a>
 								</div>
 							</div>
 
 					 		<div className="col-xs-3">
 								<select className="form-control input-sm" name="locationpick" form="locationselect" ref='sort' onChange={this.handleChange}>
-									<option>Sort by Location</option>
+									<option>Filter by Location</option>
 									{locations}
 								</select>
 							</div>
-							<a href='#' className='btn btn-sm badge pull-right' ref='unsort' onClick={this.handleClick}>Unsort</a>
-					</div>
+							<div className="col-xs-3">
+								<select className="form-control input-sm" name="skillpick" form="skillselect" ref='sortskill' onChange={this.handleSkillSelect}>
+									<option>Filter by Alumni Skill</option>
+									{skills}
+								</select>
+							</div>
+
+							<a href='#' className='btn btn-sm badge pull-right' ref='unsort' onClick={this.handleClick}>Unfilter</a>
+
+						</div>
 				</div>
 
 				<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

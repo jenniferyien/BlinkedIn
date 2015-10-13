@@ -1,8 +1,8 @@
 <div class="jumbotron">
   <div class ='container'>
-    <div class="col-xs-8 col-md-7">
-      <h1>BlinkedIn</h1>
-      <h2>Get hired in the blink of an eye.</h2>
+    <div class="col-xs-7">
+      <h1 class="title">BlinkedIn</h1>
+      <h2 class="slogan">Get hired in the blink of an eye.</h2>
     </div>
   </div>
 </div>
@@ -12,22 +12,13 @@
 <div class ='container'>
 
   <p id="notice"><%= notice %></p>
-<h3>Some of our wonderful users:</h3>
-<ul>
-  <% @users.each do |user| %>
-    <% if @alumnis.any?{|a| a.user_id == user.id} %>
-      <% alumni = Alumni.find_by(user_id: user.id)%>
-      <li><%= link_to "#{user.first_name} #{user.last_name} (Alum)", alumni_path(alumni.id) %></li>
-    <% elsif @employers.any?{|a| a.user_id == user.id} %>
-      <% employer = Employer.find_by(user_id: user.id)%>
-      <li><%= link_to "#{user.first_name} #{user.last_name} (Employer)", employer_path(employer.id) %></li>
-    <% end %>
-  <% end %>
-</ul>
 
-
-<h1>Number of Users Registered</h1>
- <canvas id="myChart" width="500" height="400"></canvas>
-
- <!-- <canvas id="myBarChart" width="500" height="400"></canvas> -->
+  <div class='col-md-6'>
+    <h1>Number of Users Registered</h1>
+     <canvas id="myChart" width="250" height="400"></canvas>
+  </div>
+  <div class='col-md-6'>
+    <h1>Number of Users with the following Skills</h1>
+     <canvas id="myBarChart" width="400" height="400"></canvas>
+  </div>
 </div>

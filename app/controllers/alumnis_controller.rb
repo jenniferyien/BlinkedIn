@@ -1,6 +1,12 @@
 class AlumnisController < ApplicationController
   before_action :set_alumni, only: [:show, :edit, :update, :destroy]
+  # before_filter :allow_iframe_requests
+  after_action :allow_iframe, only: :iframe
 
+
+  # def allow_iframe_requests
+  # response.headers.delete('X-Frame-Options')
+  # end
   # GET /alumnis
   # GET /alumnis.json
   def index
@@ -48,6 +54,7 @@ class AlumnisController < ApplicationController
     @alumni.user_id = current_user.id
     respond_to do |format|
       if @alumni.save
+        SkillMatchMailer.new_match(@alumni).deliver
         format.html { redirect_to @alumni, notice: 'Alumni was successfully created.' }
         format.json { render :show, status: :created, location: @alumni }
       else
@@ -62,6 +69,7 @@ class AlumnisController < ApplicationController
   def update
     respond_to do |format|
       if @alumni.update(alumni_params)
+        SkillMatchMailer.new_match(@alumni).deliver
         format.html { redirect_to @alumni, notice: 'Alumni was successfully updated.' }
         format.json { render :show, status: :ok, location: @alumni }
       else
@@ -92,4 +100,9 @@ class AlumnisController < ApplicationController
   def alumni_params
     params.require(:alumni).permit(:user_id, :location_id, :about, :q1, :q2, :q3, :position, :view, :fun_fact, :resume, :avatar, { skill_ids: [] }, projects_attributes: [:id, :alumni_id, :name, :url, :description, :_destroy])
   end
+
+  def allow_iframe
+  response.headers['X-Frame-Options'] = "ALLOWALL"
+  end
+
 end

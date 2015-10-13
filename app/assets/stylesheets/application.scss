@@ -80,19 +80,14 @@ div.panel, .avatar {
 }
 
 // account_type icons
-.col-md-4.employer {
-  min-height:250px;
-  background-image: image-url('the-job.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-
+.account_type{
+  text-align: center;
 }
-.col-md-4.alumni {
-  min-height:250px;
-  background-image: image-url('internships.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-
+.col-md-6.employer {
+  text-align: center;
+}
+.col-md-6.alumni {
+  text-align: center;
 }
 
 // remove navbar default margin
@@ -110,12 +105,24 @@ div.jumbotron {
   background-image: image-url('type.jpg');
   background-position: center top;
   background-size: cover;
-  height: 500px;
-  position: relative;
+  padding-top: 13%;
+  .col-xs-7 {
+    float: right;
+  }
 }
 
+h1.title {
+  font-weight: 400;
+}
 
-.col-xs-8 {
-    float: right;
-    padding-top: 150px;
+@media (max-width: $screen-md-min) {
+  h2.slogan {
+    font-size: 1.7em;
   }
+}
+
+@media (max-width: $screen-sm-min) {
+  h2.slogan {
+    font-size: 1.5em;
+  }
+}

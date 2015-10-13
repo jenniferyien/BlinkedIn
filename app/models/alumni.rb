@@ -6,7 +6,7 @@ class Alumni < ActiveRecord::Base
   has_many :resumes
   has_many :endorsements
   has_many :skills, through: :endorsements
-  accepts_nested_attributes_for :endorsements, :skills, :projects, allow_destroy: true, reject_if: proc { |h| h['name'].blank? }
+  accepts_nested_attributes_for :endorsements, :skills, :projects, allow_destroy: true, reject_if: proc { |h| h['name'].blank? } ,allow_destroy: true
   mount_uploader :avatar, AvatarUploader
   mount_uploader :resume, ResumeUploader
 end

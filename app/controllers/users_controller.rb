@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def search
+      # Search database by alumni, employers
     if params[:search]
       @alumnis = Alumni.where('name iLIKE ? OR first_name iLIKE ? OR last_name iLIKE ? OR email iLIKE ? OR city iLIKE ? OR state iLIKE ? OR about iLIKE ? OR q1 iLIKE ? OR q2 iLIKE ? OR q3 iLIKE ? OR fun_fact iLIKE ? OR position iLIKE ?', "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:user, :location, :skills)
       @employers = Employer.where('city iLIKE ? OR state iLIKE ? OR company_name iLIKE ? OR company_type iLIKE ? OR website iLIKE ? OR description iLIKE ?', "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").eager_load(:location)
       @locations = Location.all
+      @skills = Skill.all
     else
       @alumni = Alumni.all
       @employer = Employer.all
@@ -20,15 +22,40 @@ class UsersController < ApplicationController
     @alumnis = Alumni.all
     @employers = Employer.all
 
+    # info for piechart on front page
     @alumninum = Alumni.all.count
     gon.watch.alumninum = @alumninum
     @employernum = Employer.all.count
     gon.watch.employernum = @employernum
 
+    # compile all data in array
     @everything = [
       @alumninum, @employernum
     ]
     gon.watch.everything = @everything
+
+    # info for bar chart, each skill count
+    @jquery = Endorsement.where(skill_id: "6").count
+    gon.watch.javascript = @jquery
+    @javascript = Endorsement.where(skill_id: "1").count
+    gon.watch.javascript = @javascript
+    @rails = Endorsement.where(skill_id: "4").count
+    gon.watch.rails = @rails
+    @htmlcss = Endorsement.where(skill_id: "14").count
+    gon.watch.htmlcss = @htmlcss
+    @react = Endorsement.where(skill_id: "2").count
+    gon.watch.react = @react
+    @ajax = Endorsement.where(skill_id: "17").count
+    gon.watch.ajax = @ajax
+    @psql = Endorsement.where(skill_id: "18").count
+    gon.watch.psql = @psql
+
+    # compile all data in array
+    @allskills = [
+      @jquery, @javascript, @rails, @htmlcss, @react, @ajax, @psql
+    ]
+    gon.watch.allskills = @allskills
+
   end
 
   # GET /users/1
