@@ -15,7 +15,7 @@
         <h3><%= @alumni.position %></h3>
         <h4><%= "#{@alumni.location.city}, #{@alumni.location.state}" %></h4>
 
-        <p><%= mail_to @alumni.user.email, "Email Me" %></p>
+        <p><%= mail_to @alumni.user.email %></p>
 
         <% if current_user%>
           <% if current_user.id == @alumni.user_id %>
@@ -28,11 +28,15 @@
     <% if @alumni.skills %>
     <div class='clearfix'>
       <h4>Skills</h4>
-      <% @alumni.skills.each do |s| %>
-        <button class="btn btn-primary btn-xs skill" type="button">
-          <%= s.name %>
-          <span class="badge"><%= Endorsement.count{ |e| e.skill_id == s.id && e.alumni_id == @alumni.id } %></span>
-        </button>
+      <% skills = @alumni.skills.map { |skill| skill.id } %>
+      <% skills = skills.uniq %>
+      <% skills.each do |s| %>
+      <% endorsements_count = Endorsement.select { |e| e.skill_id == s && e.alumni_id == @alumni.id }.count %>
+          <button class="btn btn-primary btn-xs skill" name="endorsement" type="button" data-user="<%= current_user.id %>" data-skill="<%= s %>" data-alumni="<%= @alumni.id %>" data-remote="true" method="post" action="create">
+            <%= Skill.find_by(id: s).name %>
+            <span class="glyphicon glyphicon-arrow-up upvotable" aria-hidden="true"></span>
+            <span class="badge" id="<%= "skill#{s}" %>"><%= endorsements_count %></span>
+          </button>
       <% end  %>
     </div>
     <% end %>
@@ -40,21 +44,31 @@
   </div>
   <div class='col-md-5'>
     <div class='profile-info'>
-      <p><strong class="text-uppercase">About <%= @alumni.user.first_name %></strong><br/>
-        <%= @alumni.about %>
-      </p>
-      <p><strong class="text-uppercase">"What are your greatest strengths?"</strong><br/>
-        <%= @alumni.q1 %>
-      </p>
-      <p><strong class="text-uppercase">"Have you read any good books lately?"</strong><br/>
-        <%= @alumni.q2 %>
-      </p>
-      <p><strong class="text-uppercase">"Can you do a handstand?"</strong><br/>
-        <%= @alumni.q3 %>
-      </p>
-      <p><strong class="text-uppercase">Fun Fact</strong><br/>
-        <%= @alumni.fun_fact %>
-      </p>
+      <% if @alumni.about != "" %>
+        <p><strong class="text-uppercase">About <%= @alumni.user.first_name %></strong><br/>
+          <%= @alumni.about %>
+        </p>
+      <% end %>
+      <% if @alumni.q1 != "" %>
+        <p><strong class="text-uppercase">"What are your greatest strengths?"</strong><br/>
+          <%= @alumni.q1 %>
+        </p>
+      <% end %>
+      <% if @alumni.q2 != "" %>
+        <p><strong class="text-uppercase">"Have you read any good books lately?"</strong><br/>
+          <%= @alumni.q2 %>
+        </p>
+      <% end %>
+      <% if @alumni.q3 != "" %>
+        <p><strong class="text-uppercase">"Can you do a handstand?"</strong><br/>
+          <%= @alumni.q3 %>
+        </p>
+      <% end %>
+      <% if @alumni.fun_fact != "" %>
+        <p><strong class="text-uppercase">Fun Fact</strong><br/>
+          <%= @alumni.fun_fact %>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>

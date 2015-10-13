@@ -5,6 +5,9 @@ button.skill {
   display: block;
   float: left;
   margin: 0 4px 4px 0;
+  .badge {
+    font-weight: bold;
+  }
 }
 
 .avatar {
@@ -38,5 +41,3 @@ div.title-box {
 div.project-name {
   text-align: center;
 }
-
-
