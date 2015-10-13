@@ -24,11 +24,13 @@
     <% if @alumni.skills %>
     <div class='clearfix'>
       <h4>Skills</h4>
-      <% @alumni.skills.each do |s| %>
-        <button class="btn btn-primary btn-xs skill" type="button">
-          <%= s.name %>
-          <span class="badge"><%= Endorsement.count{ |e| e.skill_id == s.id && e.alumni_id == @alumni.id } %></span>
-        </button>
+      <% skills = @alumni.skills.map { |skill| skill.id } %>
+      <% skills = skills.uniq %>
+      <% skills.each do |s| %>
+          <button class="btn btn-primary btn-xs skill" name="endorsement" type="button" data-user="<%= current_user.id %>" data-skill="<%= s %>" data-alumni="<%= @alumni.id %>">
+            <%= Skill.find_by(id: s).name %>
+            <span class="badge" id="<%= "skill#{s}" %>"></span>
+          </button>
       <% end  %>
     </div>
     <% end %>
@@ -61,7 +63,7 @@
   <div data-toggle="modal" data-target="#myModal-<%=p.id%>">
     <strong><%= p.name %></strong><br>
     <a href="<%=p.url%>" target="_blank"><%=p.url%></a>
-  
+
     <iframe width="100%" height="400"src="<%=p.url%>" style="transform: scale(1);"></iframe>
     <p><%= p.description %></p>
   </div>
@@ -72,7 +74,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"> "<%= p.name %>"</h4>
         </div><!-- /.modal-header -->
-        
+
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
