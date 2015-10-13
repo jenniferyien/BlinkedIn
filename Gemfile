@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'rmagick'
 gem 'fog'
 gem 'figaro'
 gem 'simple_form'
