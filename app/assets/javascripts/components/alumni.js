@@ -6,30 +6,13 @@ $(".chosen-select").chosen({
   width: '100%'
 });
 
-$('button.skill').each( function(i,element) {
-  var skillId = element.dataset.skill;
-  var alumniId = element.dataset.alumni;
-  $.ajax({
-      url: '/alumnis/'+alumniId+'.json',
-      method: 'GET',
-      success: function(data, status, xhr) {
-          var endorsementCount = data.endorsements.filter( function(endorsement) { return endorsement.skill_id == skillId }).length;
-          $("#skill"+skillId).text(endorsementCount);
-      },
-      error: function(xhr, status, error) {
-          console.log("Nope!", error);
-      }
-  });
-})
-
 $('button.skill').click( function(event) {
-  event.preventDefault();
   var skillId = event.currentTarget.dataset.skill;
   var alumniId = event.currentTarget.dataset.alumni;
   var userId = event.currentTarget.dataset.user;
   $.ajax({
-    url: '/endorsements',
     method: 'POST',
+    url: '/endorsements',
     data: {
       endorsement: {
         user_id: userId,
@@ -37,25 +20,20 @@ $('button.skill').click( function(event) {
         skill_id: skillId
       }
     },
+    // success never triggers in ajax, even though database is updated.
+    // not sure why, it returns a 500 Internal Server Error no matter what.
     success: function(data, status, xhr) {
-      console.log(data);
+      var actual_count = parseInt( $("#skill"+skillId).text() );
+      $("#skill"+skillId).text(actual_count+1);
     },
     error: function(xhr, status, error) {
       console.log(error);
+      // this is a temporary compromise:
+      // the number will go up when you click it no matter what, with a '?'
+      var actual_count = parseInt( $("#skill"+skillId).text() );
+      $("#skill"+skillId).text((actual_count+1)+"?");
     }
   });
 });
-    // $.ajax({
-    //     url: '/alumnis/'+alumniId+'.json',
-    //     method: 'GET',
-    //     success: function(data, status, xhr) {
-    //         var endorsementCount = data.endorsements.filter( function(endorsement) { return endorsement.skill_id == skillId }).length;
-    //         $("#skill"+skillId).text(endorsementCount);
-    //     },
-    //     error: function(xhr, status, error) {
-    //         console.log("Nope!", error);
-    //     }
-    // });
-
 
 });

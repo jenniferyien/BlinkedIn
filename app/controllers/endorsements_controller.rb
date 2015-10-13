@@ -1,9 +1,9 @@
 class EndorsementsController < ApplicationController
 	before_action :set_endorsement, only: [:show, :destroy]
-	respond_to :json
+	respond_to :json, :html
 
 	def index
-		@endorsement = Endorsement.all
+		@endorsements = Endorsement.all
 	end
 
 	def show
@@ -14,10 +14,12 @@ class EndorsementsController < ApplicationController
 	end
 
 	def create
-		if 2+2 == 4
-			raise
+		if Endorsement.find_by(endorsement_params)
+			puts 'YYYYYYY'
+		# elsif Endorsement.any? {|e| (e.user_id == current_user.id) && (e.alumni_id == endorsement_params.alumni_id) && (e.skill_id == endorsement_params.skill_id) }
+		# 	puts 'ZZZZZZZ'
 		else
-	    @endorsement = Endorsement.new(endorsement_params)
+		  @endorsement = Endorsement.new(endorsement_params)
 			@endorsement.save
 		end
   end
