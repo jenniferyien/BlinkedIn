@@ -49,26 +49,19 @@ class AlumnisController < ApplicationController
   def create
     @alumni = Alumni.new(alumni_params)
     @alumni.user_id = current_user.id
-    respond_to do |format|
+
       if @alumni.save
-        format.html { redirect_to "/alumnis/#{@alumni.id}", notice: 'Alumni was successfully created.' }
-      else
-        format.html { render :new }
+          redirect_to alumni_path(@alumni.id), notice: 'Alumni was successfully created.'
       end
-    end
     SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # PATCH/PUT /alumnis/1
   # PATCH/PUT /alumnis/1.json
   def update
-    respond_to do |format|
       if @alumni.update(alumni_params)
-        format.html { redirect_to "/alumnis/#{@alumni.id}", notice: 'Alumni was successfully updated.' }
-      else
-        format.html { render :edit }
+        redirect_to alumni_path(@alumni.id), notice: 'Alumni was successfully created.'
       end
-    end
     SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
