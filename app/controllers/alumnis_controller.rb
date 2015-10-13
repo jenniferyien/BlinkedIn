@@ -54,7 +54,6 @@ class AlumnisController < ApplicationController
     @alumni.user_id = current_user.id
     respond_to do |format|
       if @alumni.save
-        SkillMatchMailer.new_match(@alumni).deliver
         format.html { redirect_to "/alumnis/#{@alumni.id}", notice: 'Alumni was successfully created.' }
         format.json { render :show, status: :created, location: @alumni }
       else
@@ -62,6 +61,7 @@ class AlumnisController < ApplicationController
         format.json { render json: @alumni.errors, status: :unprocessable_entity }
       end
     end
+    SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # PATCH/PUT /alumnis/1
@@ -69,7 +69,6 @@ class AlumnisController < ApplicationController
   def update
     respond_to do |format|
       if @alumni.update(alumni_params)
-        SkillMatchMailer.new_match(@alumni).deliver
         format.html { redirect_to "/alumnis/#{@alumni.id}", notice: 'Alumni was successfully updated.' }
         format.json { render :show, status: :ok, location: @alumni }
       else
@@ -77,6 +76,7 @@ class AlumnisController < ApplicationController
         format.json { render json: @alumni.errors, status: :unprocessable_entity }
       end
     end
+    SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # DELETE /alumnis/1
