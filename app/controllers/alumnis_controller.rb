@@ -56,6 +56,7 @@ class AlumnisController < ApplicationController
         format.html { render :new }
       end
     end
+    SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # PATCH/PUT /alumnis/1
@@ -68,6 +69,7 @@ class AlumnisController < ApplicationController
         format.html { render :edit }
       end
     end
+    SkillMatchMailer.new_match(@alumni).deliver_now
   end
 
   # DELETE /alumnis/1
