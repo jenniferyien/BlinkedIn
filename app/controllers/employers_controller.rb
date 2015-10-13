@@ -3,9 +3,6 @@ class EmployersController < ApplicationController
 
   # GET /employers
   # GET /employers.json
-  def index
-    @employers = Employer.all
-  end
 
   # GET /employers/1
   # GET /employers/1.json
